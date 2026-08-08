@@ -10,6 +10,5 @@ After deploying and thoroughly testing the SmartDocAI system on AWS, this sectio
 
 ### Contents
 
-1. [Workshop Summary & Cost](5.6.1-Summary-Cost/)
-2. [Resource Cleanup](5.6.2-Cleanup/)
-3. [Next Steps & References](5.6.3-Next-Steps/)
+1. [Resource Cleanup](5.6.1-Cleanup/)
+2. [Next Steps & References](5.6.2-Next-Steps/)

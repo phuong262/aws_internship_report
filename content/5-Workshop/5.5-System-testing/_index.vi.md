@@ -17,4 +17,3 @@ Khác với các chương triển khai hạ tầng (tạo tài nguyên qua giao 
 3. [Kiểm thử bảo mật](5.5.3-Security/)
 4. [Kiểm thử hồ sơ cá nhân](5.5.4-Profile/)
 5. [Giám sát & Nhật ký hệ thống](5.5.5-Monitoring/)
-6. [Kiểm thử tự động CI/CD](5.5.6-CICD/)

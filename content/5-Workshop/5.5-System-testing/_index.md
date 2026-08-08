@@ -17,4 +17,3 @@ Unlike the infrastructure deployment chapters (creating resources through the AW
 3. [Security Testing](5.5.3-Security/)
 4. [Profile Testing](5.5.4-Profile/)
 5. [Monitoring & Logging](5.5.5-Monitoring/)
-6. [CI/CD Automated Testing](5.5.6-CICD/)

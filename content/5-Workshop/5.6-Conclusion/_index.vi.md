@@ -12,4 +12,3 @@ Sau khi triển khai và kiểm thử toàn diện hệ thống SmartDocAI trên
 
 1. [Tổng kết Workshop & Chi phí](5.6.1-Summary-Cost/)
 2. [Dọn dẹp tài nguyên](5.6.2-Cleanup/)
-3. [Bước tiếp theo & Tài liệu tham khảo](5.6.3-Next-Steps/)

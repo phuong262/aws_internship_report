@@ -43,7 +43,7 @@ Phần này liệt kê chi tiết từng dịch vụ AWS mà SmartDocAI sử d�
 | Dịch vụ | Cấu hình | Vai trò |
 |---|---|---|
 | **Amazon SNS** | Notification Topic liên kết với Textract | Đóng vai trò "người đưa tin" trong kiến trúc Hướng sự kiện. Nhận tín hiệu khi Textract xử lý xong file và kích hoạt hàm Lambda textract-result-dev. |
-| **Amazon CloudFront** | CDN Distribution | Tăng tốc độ phân phối nội dung Frontend tới người dùng toàn cầu, giảm độ trễ và hỗ trợ bảo mật HTTPS. |
+| **AWS Amplify** | Web Hosting & CI/CD | Lưu trữ và tự động triển khai (deploy) ứng dụng React Frontend trực tiếp từ mã nguồn. Tích hợp sẵn mạng phân phối CDN toàn cầu và tự động quản lý chứng chỉ bảo mật HTTPS. |
 
 ### 6. Automation & Monitoring
 
@@ -55,7 +55,7 @@ Phần này liệt kê chi tiết từng dịch vụ AWS mà SmartDocAI sử d�
 
 | Tầng | Dịch vụ AWS sử dụng |
 |---|---|
-| **Presentation** | S3 (Frontend), CloudFront |
+| **Presentation** | AWS Amplify |
 | **Application & Orchestration** | API Gateway, AWS Lambda, SNS |
 | **Data** | S3 (Storage), RDS PostgreSQL (pgvector), DynamoDB |
 | **AI & NLP** | Amazon Bedrock, Amazon Textract |

@@ -3,7 +3,7 @@ title : "Bước tiếp theo & Tài liệu tham khảo"
 date : 2024-01-01
 weight : 3
 chapter : false
-pre : " <b> 5.6.3 </b> "
+pre : " <b> 5.6.2 </b> "
 ---
 
 Workshop đã hoàn thành mục tiêu triển khai và kiểm thử SmartDocAI ở quy mô demo/thực tập. Phần này liệt kê các hạng mục nên cân nhắc bổ sung nếu muốn đưa hệ thống lên môi trường production thực sự với traffic lớn hơn.
@@ -37,25 +37,5 @@ Workshop đã hoàn thành mục tiêu triển khai và kiểm thử SmartDocAI 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 
 ---
-
-## Tài liệu tham khảo
-
-- **Source code:** [GitHub - TakunKenjo/SmartdocAI-AWS](https://github.com/TakunKenjo/SmartdocAI-AWS)
-- **Architecture:** Section 5.1.3 "Kiến trúc tổng thể trên AWS"
-- **AWS services:** Section 5.1.4 "Các dịch vụ AWS được sử dụng"
-- **Testing guide:** Section 5.5 "Kiểm thử hệ thống"
-- **Security audit:** `SmartdocAI-AWS/SECURITY_CONSIDERATIONS.md`
-- **EventBridge setup:** `SmartdocAI-AWS/EVENTBRIDGE_SETUP_GUIDE.md`
-- **Handover document:** `SmartdocAI-AWS/BANGIAO.md` (branch: tam)
-
----
-
-## Góp ý & Liên hệ
-
-Nếu có câu hỏi hoặc góp ý về workshop này, vui lòng liên hệ:
-
-- **Email:** 12345levan@gmail.com
-- **GitHub:** [@TakunKenjo](https://github.com/TakunKenjo)
-- **Kho mã nguồn Workshop:** [Workshop-AWS-Group-Report](https://github.com/TakunKenjo/Workshop-AWS-Group-Report)
 
 **Cảm ơn bạn đã hoàn thành workshop SmartDocAI!**

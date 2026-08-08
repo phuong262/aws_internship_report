@@ -43,7 +43,7 @@ This section details each AWS service utilized by SmartDocAI, including specific
 | Service | Configuration | Role |
 |---|---|---|
 | **Amazon SNS** | Notification Topic linked to Textract | Acts as the "messenger" within the event-driven architecture. Receive a signal when Textract finishes processing the file and triggers the `textract-result-dev` Lambda function. |
-| **Amazon CloudFront** | CDN Distribution | Accelerates frontend content delivery to global users, reduces latency, and supports HTTPS security. |
+| **AWS Amplify** | Web Hosting & CI/CD | Hosts and automatically deploys React frontend applications directly from source code. Features built-in global CDN integration and automatic HTTPS security certificate management. |
 
 ### 6. Automation & Monitoring
 
@@ -55,7 +55,7 @@ This section details each AWS service utilized by SmartDocAI, including specific
 
 | Layer | AWS Services Used |
 |---|---|
-| **Presentation** | S3 (Frontend), CloudFront |
+| **Presentation** | AWS Amplify |
 | **Application & Orchestration** | API Gateway, AWS Lambda, SNS |
 | **Data** | S3 (Storage), RDS PostgreSQL (pgvector), DynamoDB |
 | **AI & NLP** | Amazon Bedrock, Amazon Textract |

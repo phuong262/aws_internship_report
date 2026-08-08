@@ -56,6 +56,5 @@ Learners will practice from resource preparation, Docker Container packaging, cl
    - 5.5.6 [CI/CD Automated Testing](5.5-System-testing/5.5.6-CICD/)
 
 6. **[Conclusion](5.6-Conclusion/)**
-   - 5.6.1 [Workshop Summary & Cost](5.6-Conclusion/5.6.1-Summary-Cost/)
-   - 5.6.2 [Resource Cleanup](5.6-Conclusion/5.6.2-Cleanup/)
-   - 5.6.3 [Next Steps & References](5.6-Conclusion/5.6.3-Next-Steps/)
+   - 5.6.1 [Resource Cleanup](5.6-Conclusion/5.6.1-Cleanup/)
+   - 5.6.2 [Next Steps & References](5.6-Conclusion/5.6.2-Next-Steps/)

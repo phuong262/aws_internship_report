@@ -36,6 +36,5 @@ Người học sẽ được thực hành từ khâu chuẩn bị tài nguyên, 
 5. **[Kiểm thử hệ thống (System Testing)](5.5-System-testing/)**
 
 6. **[Tổng kết (Conclusion)](5.6-Conclusion/)**
-   - 5.6.1 [Tổng kết Workshop & Chi phí](5.6-Conclusion/5.6.1-Summary-Cost/)
-   - 5.6.2 [Dọn dẹp tài nguyên](5.6-Conclusion/5.6.2-Cleanup/)
-   - 5.6.3 [Bước tiếp theo & Tài liệu tham khảo](5.6-Conclusion/5.6.3-Next-Steps/)
+   - 5.6.1 [Dọn dẹp tài nguyên](5.6-Conclusion/5.6.1-Cleanup/)
+   - 5.6.2 [Bước tiếp theo & Tài liệu tham khảo](5.6-Conclusion/5.6.2-Next-Steps/)
