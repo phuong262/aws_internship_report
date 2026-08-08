@@ -1,108 +1,392 @@
 ---
 title: "Bản đề xuất"
-date: 2024-01-01
+date: 2026-08-08
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+# SMART DOCUMENT CHATBOT
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+## HỆ THỐNG HỎI ĐÁP TÀI LIỆU THÔNG MINH TRÊN AWS
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+---
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+## 1. TỔNG QUAN DỰ ÁN
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+Smart Document Chatbot là hệ thống hỗ trợ người dùng tải lên tài liệu và đặt câu hỏi bằng ngôn ngữ tự nhiên. Hệ thống tự động trích xuất nội dung, chia nhỏ văn bản, tạo vector embedding, tìm kiếm các đoạn thông tin liên quan và sử dụng mô hình trí tuệ nhân tạo để tạo câu trả lời.
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+Dự án áp dụng kiến trúc Retrieval-Augmented Generation (RAG), kết hợp khả năng tìm kiếm dữ liệu trong tài liệu với mô hình ngôn ngữ lớn. Nhờ đó, câu trả lời được tạo dựa trên nội dung tài liệu của người dùng thay vì chỉ dựa vào kiến thức có sẵn của mô hình AI.
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+Hệ thống được xây dựng chủ yếu bằng các dịch vụ AWS như Amazon Cognito, Amazon S3, Amazon Textract, AWS Lambda, Amazon Bedrock, Amazon RDS PostgreSQL, Amazon DynamoDB và Amazon API Gateway.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+**Tên dự án:** Smart Document Chatbot
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+**Loại dự án:** Website hỏi đáp và tra cứu nội dung tài liệu
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+**Kiến trúc chính:** AWS Serverless kết hợp RDS PostgreSQL
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+**Mô hình xử lý:** Retrieval-Augmented Generation
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+**Khu vực triển khai:** AWS Region `us-east-1`
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+**Thời gian thực hiện:** 22/06/2026 - 15/08/2026
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+---
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+## 2. VẤN ĐỀ CẦN GIẢI QUYẾT
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+### 2.1. Tìm kiếm tài liệu thủ công mất nhiều thời gian
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+Người dùng thường phải đọc toàn bộ tài liệu PDF hoặc tài liệu văn bản để tìm kiếm một thông tin cụ thể. Đối với tài liệu dài hoặc số lượng tài liệu lớn, quá trình này tốn nhiều thời gian và dễ bỏ sót thông tin quan trọng.
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+### 2.2. Công cụ tìm kiếm từ khóa còn hạn chế
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+Tìm kiếm truyền thống chỉ hoạt động tốt khi từ khóa người dùng nhập giống với nội dung trong tài liệu. Hệ thống khó tìm được kết quả khi người dùng diễn đạt câu hỏi bằng từ ngữ khác nhưng có cùng ý nghĩa.
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+### 2.3. Mô hình AI có thể tạo thông tin không chính xác
 
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+Các mô hình ngôn ngữ có thể tạo ra câu trả lời không có trong tài liệu, còn được gọi là hiện tượng hallucination. Vì vậy, hệ thống cần giới hạn mô hình AI trả lời dựa trên những nội dung đã được truy xuất từ tài liệu.
+
+### 2.4. Khó quản lý lịch sử trò chuyện
+
+Người dùng cần lưu lại các câu hỏi và câu trả lời trước đó để tiếp tục cuộc hội thoại hoặc xem lại thông tin. Dữ liệu này cần được tổ chức theo từng người dùng và từng phiên trò chuyện.
+
+### 2.5. Yêu cầu bảo mật dữ liệu người dùng
+
+Tài liệu tải lên có thể chứa thông tin cá nhân hoặc dữ liệu nội bộ. Vì vậy, hệ thống cần xác thực người dùng và hạn chế quyền truy cập vào dữ liệu của người khác.
+
+---
+
+## 3. MỤC TIÊU DỰ ÁN
+
+### 3.1. Mục tiêu tổng quát
+
+Xây dựng một hệ thống hỏi đáp tài liệu thông minh trên AWS, cho phép người dùng tải tài liệu, đặt câu hỏi và nhận câu trả lời dựa trên nội dung của tài liệu đó.
+
+### 3.2. Mục tiêu cụ thể
+
+* Xây dựng chức năng đăng ký và đăng nhập người dùng bằng Amazon Cognito.
+* Lưu trữ tài liệu tải lên trên Amazon S3.
+* Sử dụng Amazon Textract để trích xuất văn bản từ tài liệu.
+* Chia văn bản thành các đoạn nhỏ để phục vụ tìm kiếm.
+* Sử dụng Amazon Titan Embeddings V2 để tạo vector embedding 1.024 chiều.
+* Lưu trữ vector trong Amazon RDS PostgreSQL bằng extension `pgvector`.
+* Tìm kiếm các đoạn tài liệu liên quan theo ngữ nghĩa.
+* Sử dụng Amazon Bedrock để tạo câu trả lời dựa trên nội dung tìm được.
+* Lưu trữ lịch sử trò chuyện trong Amazon DynamoDB.
+* Xây dựng các Lambda thực hiện Create, Read, Update và Delete lịch sử trò chuyện.
+* Kiểm thử hiệu năng tìm kiếm vector và truy vấn lịch sử chat.
+* Xây dựng hệ thống có khả năng mở rộng và kiểm soát chi phí.
+
+---
+
+## 4. ĐỐI TƯỢNG SỬ DỤNG
+
+Hệ thống hướng tới các nhóm người dùng sau:
+
+* Sinh viên cần tra cứu giáo trình và tài liệu học tập.
+* Giảng viên cần tìm kiếm thông tin trong tài liệu giảng dạy.
+* Nhân viên doanh nghiệp cần tra cứu tài liệu nội bộ.
+* Nhóm nghiên cứu cần tổng hợp thông tin từ nhiều tài liệu.
+* Người dùng cá nhân cần hỏi đáp nhanh về nội dung PDF.
+
+---
+
+## 5. KIẾN TRÚC GIẢI PHÁP
+
+### 5.1. Luồng xử lý tài liệu
+
+1. Người dùng đăng ký hoặc đăng nhập thông qua Amazon Cognito.
+2. Người dùng tải tài liệu lên hệ thống.
+3. Tài liệu được lưu trữ trên Amazon S3.
+4. Amazon Textract trích xuất văn bản từ tài liệu.
+5. AWS Lambda chia nội dung thành các đoạn nhỏ.
+6. Lambda gửi từng đoạn đến Amazon Bedrock.
+7. Mô hình `amazon.titan-embed-text-v2:0` tạo vector embedding 1.024 chiều.
+8. Nội dung và vector được lưu trong Amazon RDS PostgreSQL.
+9. Thông tin cơ bản của tài liệu được lưu trong bảng `documents`.
+
+### 5.2. Luồng hỏi đáp
+
+1. Người dùng nhập câu hỏi trên giao diện.
+2. Câu hỏi được gửi đến backend thông qua API.
+3. Amazon Bedrock chuyển câu hỏi thành vector embedding.
+4. AWS Lambda tìm kiếm các vector gần nhất trong PostgreSQL.
+5. Hệ thống lấy các đoạn tài liệu có nội dung liên quan nhất.
+6. Nội dung được tìm thấy được gửi đến mô hình ngôn ngữ trên Amazon Bedrock.
+7. Mô hình tạo câu trả lời dựa trên ngữ cảnh tài liệu.
+8. Câu hỏi và câu trả lời được lưu vào Amazon DynamoDB.
+9. Kết quả được trả về giao diện người dùng.
+
+---
+
+## 6. CÁC DỊCH VỤ AWS ĐƯỢC SỬ DỤNG
+
+| Dịch vụ AWS           | Vai trò trong hệ thống                                   |
+| --------------------- | -------------------------------------------------------- |
+| Amazon Cognito        | Quản lý đăng ký, đăng nhập và xác thực người dùng        |
+| Amazon S3             | Lưu trữ tài liệu được người dùng tải lên                 |
+| Amazon Textract       | Trích xuất văn bản từ PDF và hình ảnh                    |
+| AWS Lambda            | Xử lý logic backend, tài liệu, embedding và lịch sử chat |
+| Amazon Bedrock        | Tạo vector embedding và sinh câu trả lời                 |
+| Amazon RDS PostgreSQL | Lưu trữ tài liệu, đoạn nội dung và vector embedding      |
+| pgvector              | Hỗ trợ lưu trữ và tìm kiếm vector trong PostgreSQL       |
+| Amazon DynamoDB       | Lưu trữ lịch sử trò chuyện                               |
+| Amazon API Gateway    | Cung cấp API để frontend gọi các Lambda backend          |
+| Amazon CloudWatch     | Theo dõi log và lỗi của Lambda                           |
+| AWS IAM               | Quản lý quyền truy cập giữa các dịch vụ AWS              |
+| Amazon VPC            | Cung cấp môi trường mạng cho Lambda và RDS               |
+
+---
+
+## 7. THIẾT KẾ CƠ SỞ DỮ LIỆU
+
+### 7.1. Amazon RDS PostgreSQL
+
+RDS PostgreSQL được sử dụng để lưu trữ thông tin tài liệu và vector embedding.
+
+#### Bảng `documents`
+
+Bảng `documents` lưu thông tin tổng quát của tài liệu:
+
+| Thuộc tính    | Mô tả                         |
+| ------------- | ----------------------------- |
+| `document_id` | Mã định danh tài liệu         |
+| `user_id`     | Mã người dùng sở hữu tài liệu |
+| `file_name`   | Tên tài liệu                  |
+| `file_type`   | Định dạng tài liệu            |
+| `status`      | Trạng thái xử lý              |
+| `created_at`  | Thời gian tạo                 |
+
+#### Bảng `document_chunks`
+
+Bảng `document_chunks` lưu các đoạn nội dung và vector:
+
+| Thuộc tính        | Mô tả                        |
+| ----------------- | ---------------------------- |
+| `id`              | Mã định danh đoạn nội dung   |
+| `document_id`     | Mã tài liệu                  |
+| `user_id`         | Mã người dùng                |
+| `file_name`       | Tên tài liệu                 |
+| `page_number`     | Số trang                     |
+| `chunk_index`     | Vị trí đoạn nội dung         |
+| `content`         | Nội dung văn bản             |
+| `embedding`       | Vector embedding 1.024 chiều |
+| `embedding_model` | Tên mô hình embedding        |
+| `metadata`        | Dữ liệu bổ sung              |
+
+Việc tìm kiếm ngữ nghĩa được thực hiện bằng toán tử khoảng cách vector của `pgvector`.
+
+### 7.2. Amazon DynamoDB
+
+Bảng `ChatHistory-dev` được sử dụng để lưu lịch sử trò chuyện.
+
+Các thuộc tính chính bao gồm:
+
+| Thuộc tính   | Mô tả                                   |
+| ------------ | --------------------------------------- |
+| `userId`     | Mã người dùng                           |
+| `sessionId`  | Mã phiên trò chuyện                     |
+| `messageId`  | Mã tin nhắn                             |
+| `messageKey` | Khóa sắp xếp theo `createdAt#messageId` |
+| `role`       | Người gửi, gồm user hoặc assistant      |
+| `content`    | Nội dung tin nhắn                       |
+| `references` | Nguồn tài liệu tham khảo                |
+| `createdAt`  | Thời gian tạo                           |
+| `updatedAt`  | Thời gian cập nhật                      |
+
+Cách tổ chức khóa giúp hệ thống truy vấn nhanh lịch sử tin nhắn theo người dùng, phiên trò chuyện và thời gian.
+
+---
+
+## 8. CÁC CHỨC NĂNG CHÍNH
+
+### 8.1. Xác thực người dùng
+
+* Đăng ký tài khoản.
+* Xác nhận tài khoản qua email.
+* Đăng nhập và đăng xuất.
+* Nhận token xác thực từ Amazon Cognito.
+* Giới hạn quyền truy cập đối với người dùng chưa đăng nhập.
+
+### 8.2. Quản lý tài liệu
+
+* Tải tài liệu lên Amazon S3.
+* Trích xuất văn bản bằng Amazon Textract.
+* Chia nội dung thành các đoạn nhỏ.
+* Tạo và lưu vector embedding.
+* Hiển thị danh sách tài liệu của người dùng.
+* Xóa tài liệu không còn sử dụng.
+
+### 8.3. Hỏi đáp tài liệu
+
+* Nhập câu hỏi bằng ngôn ngữ tự nhiên.
+* Tìm kiếm các đoạn tài liệu có nội dung tương đồng.
+* Tạo câu trả lời dựa trên nội dung tìm được.
+* Trả về tên tài liệu, trang và đoạn nội dung tham khảo.
+* Hạn chế câu trả lời không có căn cứ trong tài liệu.
+
+### 8.4. Quản lý lịch sử trò chuyện
+
+* Tạo tin nhắn mới.
+* Xem lại lịch sử trò chuyện.
+* Cập nhật nội dung tin nhắn.
+* Xóa tin nhắn.
+* Phân chia lịch sử theo người dùng và phiên chat.
+
+---
+
+## 9. PHẠM VI CÔNG VIỆC PHỤ TRÁCH
+
+Trong dự án nhóm, phần công việc được phụ trách tập trung vào cơ sở dữ liệu, Lambda và kiểm thử hiệu năng:
+
+* Khởi tạo Amazon RDS PostgreSQL.
+* Cấu hình VPC và Security Group cho RDS.
+* Kích hoạt extension `pgvector`.
+* Xây dựng bảng `documents` và `document_chunks`.
+* Cấu hình trường embedding với kích thước 1.024 chiều.
+* Tạo bảng DynamoDB `ChatHistory-dev`.
+* Thiết kế khóa phục vụ truy vấn lịch sử trò chuyện.
+* Phát triển Lambda Create tin nhắn.
+* Phát triển Lambda Get History.
+* Phát triển Lambda Update tin nhắn.
+* Phát triển Lambda Delete tin nhắn.
+* Xây dựng Lambda tạo dữ liệu vector thử nghiệm.
+* Xây dựng Lambda tìm kiếm vector.
+* Tích hợp Amazon Titan Embeddings V2.
+* Tạo dữ liệu giả cho RDS và DynamoDB.
+* Đo và phân tích hiệu năng truy vấn.
+* Cấu hình Amazon Cognito User Pool và kiểm thử đăng nhập.
+* Tổng hợp kết quả và xây dựng báo cáo.
+
+Các thành viên khác trong nhóm phụ trách frontend, lưu trữ S3, trích xuất tài liệu bằng Textract và các thành phần tích hợp còn lại.
+
+---
+
+## 10. KẾ HOẠCH THỰC HIỆN
+
+| Giai đoạn   | Thời gian          | Nội dung   chính                                              |
+| ----------- | ------------------ | ----------------------------------------------------------- |
+| Giai đoạn 1 | 22/06 - 28/06/2026 | Tìm hiểu AWS, IAM, Global Infrastructure và quản lý chi phí |
+| Giai đoạn 2 | 29/06 - 05/07/2026 | Nghiên cứu các dịch vụ AWS cốt lõi                          |
+| Giai đoạn 3 | 06/07 - 12/07/2026 | Phân tích yêu cầu và thiết kế kiến trúc                     |
+| Giai đoạn 4 | 13/07 - 19/07/2026 | Khởi tạo RDS, pgvector và DynamoDB                          |
+| Giai đoạn 5 | 20/07 - 26/07/2026 | Phát triển các Lambda CRUD                                  |
+| Giai đoạn 6 | 27/07 - 02/08/2026 | Tích hợp Bedrock, tạo embedding và dữ liệu kiểm thử         |
+| Giai đoạn 7 | 03/08 - 09/08/2026 | Đo hiệu năng và cấu hình Cognito                            |
+| Hoàn thiện  | 10/08 - 15/08/2026 | Tích hợp, tổng hợp kết quả và viết báo cáo                  |
+
+---
+
+## 11. KẾT QUẢ KIỂM THỬ
+
+### 11.1. Tìm kiếm vector trên RDS
+
+* Tổng số vector thử nghiệm: **2.000**
+* Số lượt warm-up: **5**
+* Số lượt kiểm thử: **50**
+* Số kết quả mỗi truy vấn: **5**
+* Độ trễ nhỏ nhất: **49,561 ms**
+* Độ trễ lớn nhất: **60,079 ms**
+* Độ trễ trung bình: **50,398 ms**
+* Trung vị: **49,998 ms**
+* P95: **50,519 ms**
+* Kết quả mong đợi được tìm thấy: **Đúng**
+
+### 11.2. Truy vấn lịch sử chat trên DynamoDB
+
+* Số phiên trò chuyện: **100**
+* Số tin nhắn mỗi phiên: **20**
+* Số lượt truy vấn: **100**
+* Số lượt thành công: **100**
+* Số lỗi: **0**
+* Độ trễ nhỏ nhất: **16,797 ms**
+* Độ trễ lớn nhất: **238,972 ms**
+* Độ trễ trung bình: **35,172 ms**
+* Trung vị: **38,423 ms**
+* P95: **58,278 ms**
+* Tỷ lệ lỗi: **0%**
+
+Kết quả cho thấy hệ thống có thể tìm kiếm vector chính xác và truy vấn lịch sử trò chuyện ổn định trong phạm vi dữ liệu thử nghiệm.
+
+---
+
+## 12. CHI PHÍ VÀ PHƯƠNG ÁN KIỂM SOÁT
+
+Hệ thống sử dụng kết hợp dịch vụ Serverless và Amazon RDS PostgreSQL.
+
+Các dịch vụ như Lambda, DynamoDB và S3 được tính phí theo lượng sử dụng. Amazon Bedrock được tính phí theo số lượng token đầu vào và đầu ra. Amazon Textract được tính theo số trang tài liệu được xử lý.
+
+Amazon RDS là tài nguyên phát sinh chi phí trong thời gian database hoạt động, ngay cả khi không có truy vấn. Vì vậy, dự án áp dụng các biện pháp:
+
+* Sử dụng AWS Credits và Free Tier khi phù hợp.
+* Dừng RDS khi không thực hiện kiểm thử.
+* Xóa snapshot và tài nguyên không cần thiết.
+* Theo dõi chi phí bằng AWS Cost Explorer.
+* Thiết lập cảnh báo bằng AWS Budgets.
+* Giới hạn số lượng tài liệu và lượt gọi Bedrock trong môi trường demo.
+* Kiểm tra chi phí theo từng dịch vụ định kỳ.
+
+---
+
+## 13. RỦI RO VÀ GIẢI PHÁP
+
+| Rủi ro                            | Mức độ     | Giải pháp                                                       |
+| --------------------------------- | ---------- | --------------------------------------------------------------- |
+| Lambda không kết nối được RDS     | Cao        | Kiểm tra VPC, Subnet, Security Group và quyền IAM               |
+| Thiếu thư viện kết nối PostgreSQL | Trung bình | Đóng gói dependency trong deployment package hoặc Lambda Layer  |
+| Sai AWS Region                    | Trung bình | Thống nhất sử dụng `us-east-1` cho các tài nguyên liên quan     |
+| Vector không đúng 1.024 chiều     | Cao        | Kiểm tra kích thước embedding trước khi lưu                     |
+| Câu trả lời không đúng tài liệu   | Cao        | Chỉ cung cấp ngữ cảnh đã truy xuất và yêu cầu trả lời kèm nguồn |
+| Rò rỉ dữ liệu giữa người dùng     | Cao        | Xác thực bằng Cognito và lọc dữ liệu theo `user_id`             |
+| Phát sinh chi phí RDS             | Trung bình | Dừng database khi không sử dụng và thiết lập AWS Budgets        |
+| Lambda bị timeout                 | Trung bình | Tối ưu truy vấn, giới hạn dữ liệu và cấu hình timeout phù hợp   |
+| Mất dữ liệu lịch sử chat          | Trung bình | Thiết kế khóa DynamoDB rõ ràng và kiểm thử CRUD                 |
+| Thiếu quyền IAM                   | Trung bình | Áp dụng nguyên tắc least privilege và kiểm tra CloudWatch Logs  |
+
+---
+
+## 14. KẾT QUẢ MONG ĐỢI
+
+Sau khi hoàn thành, hệ thống cần đáp ứng các yêu cầu:
+
+* Người dùng có thể đăng ký và đăng nhập.
+* Người dùng có thể tải tài liệu lên hệ thống.
+* Hệ thống có thể trích xuất và xử lý nội dung tài liệu.
+* Nội dung được chuyển thành vector embedding 1.024 chiều.
+* Vector được lưu trong PostgreSQL bằng `pgvector`.
+* Người dùng có thể đặt câu hỏi về tài liệu.
+* Hệ thống trả về câu trả lời dựa trên nội dung được tìm thấy.
+* Câu trả lời có thông tin nguồn tham khảo.
+* Lịch sử trò chuyện được lưu và truy vấn theo người dùng.
+* Các chức năng CRUD hoạt động chính xác.
+* Hệ thống có số liệu kiểm thử về độ trễ và tính chính xác.
+* Chi phí tài nguyên được theo dõi và kiểm soát.
+
+---
+
+## 15. SẢN PHẨM BÀN GIAO
+
+* Kiến trúc tổng thể hệ thống trên AWS.
+* Amazon RDS PostgreSQL có extension `pgvector`.
+* Các bảng `documents` và `document_chunks`.
+* Bảng DynamoDB `ChatHistory-dev`.
+* Bộ Lambda CRUD lịch sử trò chuyện.
+* Lambda tạo dữ liệu vector thử nghiệm.
+* Lambda tìm kiếm vector.
+* Cấu hình Amazon Cognito User Pool.
+* Kết quả kiểm thử RDS và DynamoDB.
+* Mã nguồn dự án.
+* Tài liệu hướng dẫn triển khai.
+* Website báo cáo song ngữ Việt - Anh.
+
+---
+
+## 16. KẾT LUẬN
+
+Smart Document Chatbot giải quyết nhu cầu tìm kiếm và hỏi đáp thông tin trong tài liệu bằng cách kết hợp các dịch vụ AWS với kiến trúc RAG.
+
+Dự án giúp giảm thời gian tìm kiếm thủ công, nâng cao khả năng truy xuất thông tin theo ngữ nghĩa và quản lý lịch sử trò chuyện một cách hiệu quả.
+
+Thông qua dự án, nhóm có thể áp dụng kiến thức về Cloud Computing, Serverless, Security, Database và Generative AI vào một bài toán thực tế. Hệ thống cũng tạo nền tảng để tiếp tục phát triển thêm các chức năng như hỗ trợ nhiều định dạng tài liệu, quản lý tài liệu theo người dùng, cải thiện trích dẫn nguồn và tối ưu hiệu năng trong tương lai.

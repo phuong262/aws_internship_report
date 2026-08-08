@@ -1,40 +1,40 @@
 ---
 title: "Tự đánh giá"
-date: 2024-01-01
+date: 2026-08-08
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+Trong thời gian tham gia chương trình **First Cloud AI Journey** từ ngày **22/06/2026** đến ngày **15/08/2026**, tôi đã có cơ hội củng cố kiến thức nền tảng về AWS và áp dụng vào quá trình nghiên cứu, xây dựng đề tài **Smart Docs AI**.
 
-Trong suốt thời gian thực tập tại **[Tên công ty/tổ chức]** từ **[ngày bắt đầu]** đến **[ngày kết thúc]**, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường làm việc thực tế.  
-Tôi đã tham gia **[mô tả ngắn gọn dự án hoặc công việc chính]**, qua đó cải thiện kỹ năng **[liệt kê kỹ năng: lập trình, phân tích, viết báo cáo, giao tiếp…]**.  
+Thông qua các công việc được thực hiện, tôi hiểu rõ hơn về kiến trúc Cloud và Serverless, cách lựa chọn dịch vụ AWS, quản lý dữ liệu, giám sát hệ thống và bảo vệ tài nguyên. Bên cạnh kiến thức chuyên môn, tôi còn rèn luyện kỹ năng tự nghiên cứu tài liệu, trình bày giải pháp, viết báo cáo kỹ thuật, làm việc nhóm và quản lý tiến độ.
 
-Về tác phong, tôi luôn cố gắng hoàn thành tốt nhiệm vụ, tuân thủ nội quy, và tích cực trao đổi với đồng nghiệp để nâng cao hiệu quả công việc.
+Tôi luôn cố gắng hoàn thành các nhiệm vụ đúng kế hoạch, chủ động tìm hiểu khi gặp vấn đề và tiếp nhận góp ý để cải thiện kết quả. Dựa trên quá trình thực tập, tôi tự đánh giá bản thân theo các tiêu chí sau:
 
-Để phản ánh một cách khách quan quá trình thực tập, tôi xin tự đánh giá bản thân dựa trên các tiêu chí dưới đây:
+| STT | Tiêu chí | Mô tả | Tốt | Khá | Trung bình |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Kiến thức và kỹ năng chuyên môn** | Vận dụng kiến thức AWS và công nghệ thông tin vào đề tài | ☐ | ✅ | ☐ |
+| 2 | **Khả năng học hỏi** | Chủ động tiếp cận dịch vụ và kiến thức mới | ✅ | ☐ | ☐ |
+| 3 | **Tính chủ động** | Tự nghiên cứu tài liệu và đề xuất hướng giải quyết | ☐ | ✅ | ☐ |
+| 4 | **Tinh thần trách nhiệm** | Theo dõi tiến độ và cố gắng hoàn thành nhiệm vụ | ✅ | ☐ | ☐ |
+| 5 | **Kỷ luật** | Tuân thủ thời gian, nội quy và kế hoạch làm việc | ✅ | ☐ | ☐ |
+| 6 | **Tính cầu tiến** | Tiếp nhận phản hồi và điều chỉnh kết quả | ✅ | ☐ | ☐ |
+| 7 | **Giao tiếp** | Trình bày ý tưởng và báo cáo công việc | ✅ | ☐ | ☐ |
+| 8 | **Hợp tác nhóm** | Trao đổi, phối hợp và hỗ trợ các thành viên | ✅ | ☐ | ☐ |
+| 9 | **Tư duy giải quyết vấn đề** | Phân tích nguyên nhân và lựa chọn giải pháp phù hợp | ✅ | ☐ | ☐ |
+| 10 | **Đánh giá tổng thể** | Kết quả chung trong toàn bộ kỳ thực tập | ✅ | ☐ | ☐ |
 
+### Điểm đã đạt được
 
-| STT | Tiêu chí                            | Mô tả                                                                                            | Tốt | Khá | Trung bình |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | --- | --- | ---------- |
-| 1   | **Kiến thức và kỹ năng chuyên môn** | Hiểu biết về ngành, áp dụng kiến thức vào thực tế, kỹ năng sử dụng công cụ, chất lượng công việc | ✅   | ☐   | ☐          |
-| 2   | **Khả năng học hỏi**                | Tiếp thu kiến thức mới, học hỏi nhanh                                                            | ☐   | ✅   | ☐          |
-| 3   | **Chủ động**                        | Tự tìm hiểu, nhận nhiệm vụ mà không chờ chỉ dẫn                                                  | ✅   | ☐   | ☐          |
-| 4   | **Tinh thần trách nhiệm**           | Hoàn thành công việc đúng hạn, đảm bảo chất lượng                                                | ✅   | ☐   | ☐          |
-| 5   | **Kỷ luật**                         | Tuân thủ giờ giấc, nội quy, quy trình làm việc                                                   | ☐   | ☐   | ✅          |
-| 6   | **Tính cầu tiến**                   | Sẵn sàng nhận feedback và cải thiện bản thân                                                     | ☐   | ✅   | ☐          |
-| 7   | **Giao tiếp**                       | Trình bày ý tưởng, báo cáo công việc rõ ràng                                                     | ☐   | ✅   | ☐          |
-| 8   | **Hợp tác nhóm**                    | Làm việc hiệu quả với đồng nghiệp, tham gia nhóm                                                 | ✅   | ☐   | ☐          |
-| 9   | **Ứng xử chuyên nghiệp**            | Tôn trọng đồng nghiệp, đối tác, môi trường làm việc                                              | ✅   | ☐   | ☐          |
-| 10  | **Tư duy giải quyết vấn đề**        | Nhận diện vấn đề, đề xuất giải pháp, sáng tạo                                                    | ☐   | ✅   | ☐          |
-| 11  | **Đóng góp vào dự án/tổ chức**      | Hiệu quả công việc, sáng kiến cải tiến, ghi nhận từ team                                         | ✅   | ☐   | ☐          |
-| 12  | **Tổng thể**                        | Đánh giá chung về toàn bộ quá trình thực tập                                                     | ✅   | ☐   | ☐          |
+* Hiểu rõ hơn các nhóm dịch vụ AWS và cách kết hợp chúng trong một kiến trúc hoàn chỉnh.
+* Biết phân tích yêu cầu, thiết kế kiến trúc và cân nhắc yếu tố bảo mật, chi phí, hiệu năng.
+* Cải thiện kỹ năng tìm kiếm tài liệu, viết báo cáo và trình bày nội dung kỹ thuật.
+* Có ý thức hơn trong việc theo dõi tiến độ và chịu trách nhiệm với phần việc được giao.
 
-### Cần cải thiện
+### Nội dung cần cải thiện
 
-* Nâng cao tính kỹ luật, chấp hành nghiêm chỉnh nội quy của công ty hoặc bất kỳ trong một tổ chức nào
-* Cải thiện trong cách tư duy giải quyết vấn đề
-* Học cách giao tiếp tốt hơn trong giao tiếp hằng ngày và trong công việc, xử lý tình huống
+* Nâng cao khả năng quản lý thời gian và phân chia công việc theo mức độ ưu tiên.
+* Cải thiện kỹ năng giao tiếp, trình bày ngắn gọn và phản hồi trong quá trình làm việc nhóm.
+* Rèn luyện thêm tư duy xử lý sự cố và kiểm thử hệ thống trong các tình huống thực tế.
+* Tiếp tục học sâu về bảo mật AWS, Infrastructure as Code và tối ưu chi phí Cloud.

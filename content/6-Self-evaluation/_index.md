@@ -1,39 +1,40 @@
 ---
 title: "Self-Assessment"
-date: 2024-01-01
+date: 2026-08-08
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+During the **First Cloud AI Journey** program from **22/06/2026** to **15/08/2026**, I had the opportunity to strengthen my foundational AWS knowledge and apply it while researching and developing the **Smart Docs AI** project.
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+Through my assigned work, I gained a clearer understanding of Cloud and Serverless architectures, AWS service selection, data management, system monitoring, and resource protection. In addition to technical knowledge, I improved my ability to conduct independent research, present solutions, write technical reports, collaborate with a team, and manage progress.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+I consistently worked to complete tasks according to plan, researched issues proactively, and used feedback to improve my results. Based on my internship experience, I evaluated myself according to the following criteria:
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
+| No. | Criterion | Description | Good | Fair | Average |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Professional knowledge and skills** | Applying AWS and information technology knowledge to the project | ☐ | ✅ | ☐ |
+| 2 | **Ability to learn** | Proactively approaching new services and knowledge | ✅ | ☐ | ☐ |
+| 3 | **Proactiveness** | Independently researching documentation and proposing solutions | ☐ | ✅ | ☐ |
+| 4 | **Sense of responsibility** | Monitoring progress and completing assigned tasks | ✅ | ☐ | ☐ |
+| 5 | **Discipline** | Following schedules, regulations, and work plans | ✅ | ☐ | ☐ |
+| 6 | **Growth mindset** | Receiving feedback and improving results | ✅ | ☐ | ☐ |
+| 7 | **Communication** | Presenting ideas and reporting work clearly | ✅ | ☐ | ☐ |
+| 8 | **Teamwork** | Communicating, coordinating, and supporting team members | ✅ | ☐ | ☐ |
+| 9 | **Problem-solving** | Analyzing causes and selecting appropriate solutions | ✅ | ☐ | ☐ |
+| 10 | **Overall assessment** | Overall performance throughout the internship | ✅ | ☐ | ☐ |
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+### Achievements
 
-### Needs Improvement
+* Developed a clearer understanding of AWS service categories and how they work together in a complete architecture.
+* Learned to analyze requirements, design architecture, and consider security, cost, and performance.
+* Improved research, technical writing, and presentation skills.
+* Became more conscious of tracking progress and taking responsibility for assigned work.
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+### Areas for Improvement
+
+* Improve time management and prioritize tasks more effectively.
+* Communicate ideas more concisely and provide timely feedback during teamwork.
+* Continue developing troubleshooting and system-testing skills for real-world scenarios.
+* Study AWS security, Infrastructure as Code, and Cloud cost optimization in greater depth.

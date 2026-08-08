@@ -1,59 +1,34 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
-weight: 1
+date: 2026-08-08
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+**Thời gian:** Từ ngày **13/07/2026** đến ngày **18/07/2026**
 
-### Mục tiêu tuần 4:
+### Mục tiêu Tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Phát triển luồng xử lý tài liệu bằng Amazon Textract cho cả ảnh và PDF.
+* Chuẩn hóa các block và ghép văn bản thành nội dung hoàn chỉnh.
+* Tổng hợp kiến thức đã thực hành thành bài viết kỹ thuật.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|---|---|---|---|---|
+| 2 | - Phân tích các block PAGE, LINE, WORD, Geometry và mối quan hệ trong kết quả Textract<br>- Xác định những trường dữ liệu cần giữ lại để truy vết nội dung | 13/07/2026 | 13/07/2026 | [Textract Response Objects](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html) |
+| 3 | - Viết logic lọc block LINE, nhóm kết quả theo từng trang và loại bỏ dữ liệu không cần thiết<br>- Thử nghiệm với tài liệu có nhiều đoạn văn bản | 14/07/2026 | 14/07/2026 | |
+| 4 | - Sắp xếp các dòng dựa trên vị trí Geometry trước khi ghép<br>- Chuẩn hóa khoảng trắng, ký tự xuống dòng và nội dung tiếng Việt sau OCR | 15/07/2026 | 15/07/2026 | |
+| 5 | - Nghiên cứu quy trình Textract bất đồng bộ cho PDF nhiều trang<br>- Tìm hiểu StartDocumentTextDetection, JobId và GetDocumentTextDetection | 16/07/2026 | 16/07/2026 | [Asynchronous Operations](https://docs.aws.amazon.com/textract/latest/dg/async.html) |
+| 6 | - Chuẩn hóa kết quả thành JSON gồm document ID, page number và nội dung văn bản<br>- Lưu dữ liệu đã xử lý vào S3 output để các thành phần tiếp theo sử dụng | 17/07/2026 | 17/07/2026 | |
+| 7 | - Viết bài “Tự động hóa trích xuất tài liệu bằng Amazon Textract và Serverless” | 18/07/2026 | | |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Trích xuất và ghép nội dung văn bản theo đúng thứ tự tương đối.
+* Giữ lại page number để truy vết nguồn tài liệu.
+* Chuẩn hóa dữ liệu JSON thống nhất với nhóm.
+* Hoàn thiện thiết kế xử lý ảnh và PDF nhiều trang.
+* Hoàn thành bài blog kỹ thuật về Amazon Textract.

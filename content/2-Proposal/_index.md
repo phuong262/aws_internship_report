@@ -1,115 +1,384 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-08-08
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+# SMART DOCUMENT CHATBOT
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+## INTELLIGENT DOCUMENT QUESTION-ANSWERING SYSTEM ON AWS
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+---
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+## 1. PROJECT OVERVIEW
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+Smart Document Chatbot allows users to upload documents and ask questions in natural language. The system automatically extracts content, divides text into chunks, creates vector embeddings, searches for relevant passages, and uses an artificial intelligence model to generate an answer.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+The project uses Retrieval-Augmented Generation (RAG), combining document retrieval with a large language model. Answers are therefore grounded in the user's documents instead of relying only on the model's existing knowledge.
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+The system is primarily built with Amazon Cognito, Amazon S3, Amazon Textract, AWS Lambda, Amazon Bedrock, Amazon RDS for PostgreSQL, Amazon DynamoDB, and Amazon API Gateway.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+**Project name:** Smart Document Chatbot
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+**Project type:** Web application for document search and question answering
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+**Primary architecture:** AWS Serverless combined with RDS PostgreSQL
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+**Processing model:** Retrieval-Augmented Generation
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+**Deployment region:** AWS Region `us-east-1`
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+**Implementation period:** June 22, 2026 – August 15, 2026
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+---
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+## 2. PROBLEMS TO SOLVE
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+### 2.1. Manual document search is time-consuming
 
-Total: $0.7/month, $8.40/12 months
+Users often need to read an entire PDF or text document to find specific information. With long documents or large collections, this process takes considerable time and can overlook important details.
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+### 2.2. Keyword search is limited
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+Traditional search works best when a user's keywords exactly match the document. It may miss relevant information when the question uses different words with the same meaning.
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+### 2.3. AI models may generate inaccurate information
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+Language models can produce answers that do not exist in the source document, a behavior known as hallucination. The system must therefore constrain the model to answer from retrieved document content.
 
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### 2.4. Conversation history is difficult to manage
+
+Users need to retain previous questions and answers to continue a conversation or review information. This data must be organized by user and chat session.
+
+### 2.5. User data requires protection
+
+Uploaded documents may contain personal or internal information. The system must authenticate users and prevent access to another user's data.
+
+---
+
+## 3. PROJECT OBJECTIVES
+
+### 3.1. General objective
+
+Build an intelligent document question-answering system on AWS that lets users upload documents, ask questions, and receive answers grounded in those documents.
+
+### 3.2. Specific objectives
+
+* Implement user registration and sign-in with Amazon Cognito.
+* Store uploaded documents in Amazon S3.
+* Extract document text with Amazon Textract.
+* Divide text into smaller chunks for retrieval.
+* Generate 1,024-dimensional vector embeddings with Amazon Titan Embeddings V2.
+* Store vectors in Amazon RDS for PostgreSQL with the `pgvector` extension.
+* Retrieve semantically relevant document chunks.
+* Use Amazon Bedrock to generate answers from retrieved content.
+* Store conversation history in Amazon DynamoDB.
+* Develop Lambda functions to create, read, update, and delete chat history.
+* Test vector-search and chat-history query performance.
+* Build a scalable system with controlled operating costs.
+
+---
+
+## 4. TARGET USERS
+
+The system is intended for:
+
+* Students searching textbooks and study materials.
+* Lecturers searching teaching documents.
+* Employees searching internal corporate documents.
+* Research teams synthesizing information from multiple documents.
+* Individuals who need quick question answering over PDF content.
+
+---
+
+## 5. SOLUTION ARCHITECTURE
+
+### 5.1. Document-processing flow
+
+1. The user registers or signs in through Amazon Cognito.
+2. The user uploads a document.
+3. The document is stored in Amazon S3.
+4. Amazon Textract extracts its text.
+5. AWS Lambda divides the content into smaller chunks.
+6. Lambda sends each chunk to Amazon Bedrock.
+7. `amazon.titan-embed-text-v2:0` creates a 1,024-dimensional embedding.
+8. Content and vectors are stored in Amazon RDS for PostgreSQL.
+9. Basic document information is stored in the `documents` table.
+
+### 5.2. Question-answering flow
+
+1. The user enters a question in the interface.
+2. The question is sent to the backend through an API.
+3. Amazon Bedrock converts the question into a vector embedding.
+4. AWS Lambda searches PostgreSQL for the nearest vectors.
+5. The system retrieves the most relevant document chunks.
+6. Retrieved content is sent to a language model on Amazon Bedrock.
+7. The model generates an answer grounded in the document context.
+8. The question and answer are stored in Amazon DynamoDB.
+9. The result is returned to the user interface.
+
+---
+
+## 6. AWS SERVICES USED
+
+| AWS service | Role in the system |
+|---|---|
+| Amazon Cognito | User registration, sign-in, and authentication |
+| Amazon S3 | Storage for uploaded documents |
+| Amazon Textract | Text extraction from PDFs and images |
+| AWS Lambda | Backend, document, embedding, and chat-history processing |
+| Amazon Bedrock | Vector embedding generation and answer generation |
+| Amazon RDS for PostgreSQL | Storage for documents, chunks, and vector embeddings |
+| pgvector | Vector storage and similarity search in PostgreSQL |
+| Amazon DynamoDB | Conversation-history storage |
+| Amazon API Gateway | APIs connecting the frontend to backend Lambda functions |
+| Amazon CloudWatch | Lambda logs and error monitoring |
+| AWS IAM | Access control between AWS services |
+| Amazon VPC | Network environment for Lambda and RDS |
+
+---
+
+## 7. DATABASE DESIGN
+
+### 7.1. Amazon RDS for PostgreSQL
+
+RDS PostgreSQL stores document information and vector embeddings.
+
+#### `documents` table
+
+| Attribute | Description |
+|---|---|
+| `document_id` | Document identifier |
+| `user_id` | Identifier of the document owner |
+| `file_name` | Document name |
+| `file_type` | Document format |
+| `status` | Processing status |
+| `created_at` | Creation time |
+
+#### `document_chunks` table
+
+| Attribute | Description |
+|---|---|
+| `id` | Chunk identifier |
+| `document_id` | Document identifier |
+| `user_id` | User identifier |
+| `file_name` | Document name |
+| `page_number` | Page number |
+| `chunk_index` | Chunk position |
+| `content` | Text content |
+| `embedding` | 1,024-dimensional embedding vector |
+| `embedding_model` | Embedding model name |
+| `metadata` | Additional data |
+
+Semantic search uses `pgvector` distance operators.
+
+### 7.2. Amazon DynamoDB
+
+The `ChatHistory-dev` table stores conversation history.
+
+| Attribute | Description |
+|---|---|
+| `userId` | User identifier |
+| `sessionId` | Chat-session identifier |
+| `messageId` | Message identifier |
+| `messageKey` | Sort key in `createdAt#messageId` format |
+| `role` | Message sender: user or assistant |
+| `content` | Message content |
+| `references` | Document references |
+| `createdAt` | Creation time |
+| `updatedAt` | Last update time |
+
+This key design supports efficient retrieval by user, chat session, and time.
+
+---
+
+## 8. MAIN FEATURES
+
+### 8.1. User authentication
+
+* Register an account.
+* Confirm an account through email.
+* Sign in and sign out.
+* Receive an authentication token from Amazon Cognito.
+* Restrict access for unauthenticated users.
+
+### 8.2. Document management
+
+* Upload documents to Amazon S3.
+* Extract text with Amazon Textract.
+* Divide content into chunks.
+* Generate and store vector embeddings.
+* Display each user's documents.
+* Delete documents that are no longer required.
+
+### 8.3. Document question answering
+
+* Enter questions in natural language.
+* Find semantically similar document chunks.
+* Generate answers from retrieved content.
+* Return the source document, page, and reference passage.
+* Limit unsupported answers that are not grounded in documents.
+
+### 8.4. Conversation-history management
+
+* Create new messages.
+* Review conversation history.
+* Update message content.
+* Delete messages.
+* Organize history by user and chat session.
+
+---
+
+## 9. ASSIGNED WORK SCOPE
+
+The assigned work in the group project focused on databases, Lambda functions, and performance testing:
+
+* Initialize Amazon RDS for PostgreSQL.
+* Configure the VPC and Security Group for RDS.
+* Enable the `pgvector` extension.
+* Create the `documents` and `document_chunks` tables.
+* Configure the embedding field for 1,024 dimensions.
+* Create the `ChatHistory-dev` DynamoDB table.
+* Design keys for conversation-history queries.
+* Develop a Lambda function to create messages.
+* Develop a Lambda function to retrieve history.
+* Develop a Lambda function to update messages.
+* Develop a Lambda function to delete messages.
+* Develop a Lambda function that creates test vector data.
+* Develop a Lambda function for vector search.
+* Integrate Amazon Titan Embeddings V2.
+* Generate test data for RDS and DynamoDB.
+* Measure and analyze query performance.
+* Configure an Amazon Cognito User Pool and test sign-in.
+* Summarize results and prepare the report.
+
+Other team members were responsible for the frontend, S3 storage, document extraction with Textract, and the remaining integration components.
+
+---
+
+## 10. IMPLEMENTATION PLAN
+
+| Phase | Period | Main activities |
+|---|---|---|
+| Phase 1 | 22/06–28/06/2026 | Study AWS, IAM, Global Infrastructure, and cost management |
+| Phase 2 | 29/06–05/07/2026 | Research core AWS services |
+| Phase 3 | 06/07–12/07/2026 | Analyze requirements and design the architecture |
+| Phase 4 | 13/07–19/07/2026 | Initialize RDS, pgvector, and DynamoDB |
+| Phase 5 | 20/07–26/07/2026 | Develop CRUD Lambda functions |
+| Phase 6 | 27/07–02/08/2026 | Integrate Bedrock and create embeddings and test data |
+| Phase 7 | 03/08–09/08/2026 | Measure performance and configure Cognito |
+| Completion | 10/08–15/08/2026 | Integrate components, summarize results, and write the report |
+
+---
+
+## 11. TEST RESULTS
+
+### 11.1. Vector search on RDS
+
+* Total test vectors: **2,000**
+* Warm-up runs: **5**
+* Test runs: **50**
+* Results per query: **5**
+* Minimum latency: **49.561 ms**
+* Maximum latency: **60.079 ms**
+* Average latency: **50.398 ms**
+* Median: **49.998 ms**
+* P95: **50.519 ms**
+* Expected result found: **Yes**
+
+### 11.2. Chat-history queries on DynamoDB
+
+* Chat sessions: **100**
+* Messages per session: **20**
+* Query runs: **100**
+* Successful runs: **100**
+* Errors: **0**
+* Minimum latency: **16.797 ms**
+* Maximum latency: **238.972 ms**
+* Average latency: **35.172 ms**
+* Median: **38.423 ms**
+* P95: **58.278 ms**
+* Error rate: **0%**
+
+The results show that the system can accurately retrieve vectors and reliably query conversation history within the test-data scope.
+
+---
+
+## 12. COSTS AND CONTROL MEASURES
+
+The system combines Serverless services with Amazon RDS for PostgreSQL. Lambda, DynamoDB, and S3 are charged by usage. Amazon Bedrock is charged by input and output tokens, while Amazon Textract is charged by processed page.
+
+Amazon RDS incurs costs while the database is running, even without queries. The project therefore applies these controls:
+
+* Use AWS Credits and Free Tier where appropriate.
+* Stop RDS when performance tests are not running.
+* Delete unnecessary snapshots and resources.
+* Monitor costs with AWS Cost Explorer.
+* Configure alerts with AWS Budgets.
+* Limit documents and Bedrock calls in the demonstration environment.
+* Review cost by service regularly.
+
+---
+
+## 13. RISKS AND MITIGATIONS
+
+| Risk | Severity | Mitigation |
+|---|---|---|
+| Lambda cannot connect to RDS | High | Check VPC, subnet, Security Group, and IAM permissions |
+| Missing PostgreSQL client library | Medium | Package the dependency or provide it through a Lambda Layer |
+| Incorrect AWS Region | Medium | Use `us-east-1` consistently for related resources |
+| Vector does not have 1,024 dimensions | High | Validate embedding dimensions before storage |
+| Answer is not grounded in documents | High | Supply only retrieved context and require source references |
+| Data leaks between users | High | Authenticate with Cognito and filter by `user_id` |
+| Unexpected RDS costs | Medium | Stop the database when unused and configure AWS Budgets |
+| Lambda timeout | Medium | Optimize queries, limit data, and configure an appropriate timeout |
+| Loss of chat history | Medium | Design DynamoDB keys clearly and test CRUD operations |
+| Missing IAM permissions | Medium | Apply least privilege and inspect CloudWatch Logs |
+
+---
+
+## 14. EXPECTED RESULTS
+
+After completion, the system should meet these requirements:
+
+* Users can register and sign in.
+* Users can upload documents.
+* The system can extract and process document content.
+* Content is converted to 1,024-dimensional vector embeddings.
+* Vectors are stored in PostgreSQL with `pgvector`.
+* Users can ask questions about their documents.
+* Answers are generated from retrieved document content.
+* Answers include source references.
+* Conversation history is stored and queried by user.
+* CRUD functions operate correctly.
+* Performance and accuracy test results are available.
+* Resource costs are monitored and controlled.
+
+---
+
+## 15. DELIVERABLES
+
+* Overall AWS system architecture.
+* Amazon RDS for PostgreSQL with the `pgvector` extension.
+* `documents` and `document_chunks` tables.
+* `ChatHistory-dev` DynamoDB table.
+* Lambda functions for chat-history CRUD operations.
+* Lambda function for generating test vector data.
+* Lambda function for vector search.
+* Amazon Cognito User Pool configuration.
+* RDS and DynamoDB test results.
+* Project source code.
+* Deployment instructions.
+* Bilingual Vietnamese-English report website.
+
+---
+
+## 16. CONCLUSION
+
+Smart Document Chatbot addresses the need to search and ask questions over document content by combining AWS services with a RAG architecture.
+
+The project reduces manual search time, improves semantic information retrieval, and manages conversation history effectively.
+
+Through the project, the team applies knowledge of Cloud Computing, Serverless, Security, Databases, and Generative AI to a practical problem. The system also provides a foundation for supporting additional document formats, managing documents by user, improving source citations, and optimizing performance in the future.

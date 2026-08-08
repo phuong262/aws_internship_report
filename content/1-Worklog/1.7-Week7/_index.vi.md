@@ -1,59 +1,29 @@
 ---
 title: "Worklog Tuần 7"
-date: 2024-01-01
-weight: 1
+date: 2026-08-08
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+**Thời gian:** Từ ngày **03/08/2026** đến ngày **08/08/2026**
 
-### Mục tiêu tuần 7:
+### Mục tiêu Tuần 7:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Triển khai phiên bản hoàn chỉnh của hệ thống Smart Docs AI và kiểm tra hoạt động sau khi triển khai.
+* Rà soát và hoàn thiện báo cáo thực tập tốt nghiệp trước khi nộp.
+* Nộp báo cáo cho trường để chấm điểm; xin xác nhận và đóng dấu từ công ty.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|---|---|---|---|---|
+| 2 | - Triển khai phiên bản hoàn chỉnh của hệ thống Smart Docs AI<br>- Kiểm tra các chức năng chính sau khi triển khai, gồm đăng nhập, tải tài liệu, xử lý nội dung và hỏi đáp<br>- Rà soát báo cáo thực tập: kiểm tra nội dung, hình ảnh minh họa, sơ đồ kiến trúc, liên kết và định dạng trình bày<br>- Đối chiếu báo cáo với yêu cầu của trường để phát hiện nội dung còn thiếu hoặc chưa rõ ràng<br>- Chỉnh sửa và hoàn thiện báo cáo trước khi nộp | 03/08/2026 | 03/08/2026 | |
+| 3-7 | - Hoàn thiện báo cáo thực tập tốt nghiệp theo yêu cầu của trường<br>- Kiểm tra thông tin cá nhân, nội dung công việc, kết quả đạt được và định dạng báo cáo<br>- Nộp báo cáo thực tập tốt nghiệp cho trường để chấm điểm<br>- Xin xác nhận và đóng dấu từ công ty<br>- Theo dõi tiến độ tiếp nhận hồ sơ để bảo đảm hoàn thành đúng thời hạn | 04/08/2026 | 08/08/2026 | |
 
 ### Kết quả đạt được tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Triển khai thành công phiên bản hoàn chỉnh của hệ thống Smart Docs AI và kiểm tra các chức năng chính sau khi triển khai.
+* Hoàn thành việc rà soát và chỉnh sửa báo cáo thực tập theo yêu cầu của trường.
+* Hoàn thành nộp báo cáo thực tập tốt nghiệp cho trường để chấm điểm đúng hạn.
+* Báo cáo đã được công ty xác nhận và đóng dấu đúng tiến độ yêu cầu của trường.
