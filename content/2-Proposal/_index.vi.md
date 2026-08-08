@@ -1,10 +1,10 @@
 ---
+
 title: "Bản đề xuất"
-date: 2026-08-08
 weight: 2
 chapter: false
-pre: " <b> 2. </b> "
----
+pre: "<b>2. </b>"
+-----------------
 
 # SMART DOCUMENT CHATBOT
 
@@ -100,22 +100,22 @@ Hệ thống hướng tới các nhóm người dùng sau:
 1. Người dùng đăng ký hoặc đăng nhập thông qua Amazon Cognito.
 2. Người dùng tải tài liệu lên hệ thống.
 3. Tài liệu được lưu trữ trên Amazon S3.
-4. Amazon Textract trích xuất văn bản từ tài liệu.
-5. AWS Lambda chia nội dung thành các đoạn nhỏ.
-6. Lambda gửi từng đoạn đến Amazon Bedrock.
-7. Mô hình `amazon.titan-embed-text-v2:0` tạo vector embedding 1.024 chiều.
-8. Nội dung và vector được lưu trong Amazon RDS PostgreSQL.
-9. Thông tin cơ bản của tài liệu được lưu trong bảng `documents`.
+4. Amazon Textract được kích hoạt để trích xuất văn bản từ tài liệu (PDF/Hình ảnh).
+5. Khi hoàn tất, Textract phát tín hiệu qua Amazon SNS để tự động kích hoạt (trigger) hàm AWS Lambda.
+6. AWS Lambda nhận sự kiện, lấy toàn bộ văn bản từ Textract và tiến hành chia nhỏ nội dung thành các đoạn (chunk).
+7. Lambda gửi từng đoạn văn bản này đến Amazon Bedrock (mô hình amazon.titan-embed-text-v2:0) để chuyển hóa thành vector embedding 1.024 chiều.
+8. Nội dung từng đoạn (chunk) và vector embedding tương ứng được lưu vào cơ sở dữ liệu Amazon RDS PostgreSQL (thông qua extension pgvector).
+9. Các thông tin cơ bản của tài liệu (metadata) được lưu trữ vào Amazon DynamoDB để quản lý.
 
 ### 5.2. Luồng hỏi đáp
 
 1. Người dùng nhập câu hỏi trên giao diện.
-2. Câu hỏi được gửi đến backend thông qua API.
-3. Amazon Bedrock chuyển câu hỏi thành vector embedding.
-4. AWS Lambda tìm kiếm các vector gần nhất trong PostgreSQL.
-5. Hệ thống lấy các đoạn tài liệu có nội dung liên quan nhất.
-6. Nội dung được tìm thấy được gửi đến mô hình ngôn ngữ trên Amazon Bedrock.
-7. Mô hình tạo câu trả lời dựa trên ngữ cảnh tài liệu.
+2. Câu hỏi được gửi đến backend thông qua Amazon API Gateway để gọi hàm AWS Lambda.
+3. Hàm Lambda gửi câu hỏi đến Amazon Bedrock để chuyển hóa thành dạng vector embedding.
+4. Hàm Lambda sử dụng vector của câu hỏi để thực hiện truy vấn tìm kiếm sự tương đồng trong Amazon RDS PostgreSQL.
+5. Hệ thống trích xuất ra top các đoạn tài liệu (chunks) có nội dung liên quan nhất với câu hỏi.
+6. Câu hỏi của người dùng và các đoạn tài liệu ngữ cảnh vừa tìm được sẽ được đóng gói và gửi đến mô hình ngôn ngữ lớn (LLM) trên Amazon Bedrock (amazon.nova-lite-v1:0).
+7. Mô hình AI tổng hợp thông tin và tự động tạo ra câu trả lời chính xác dựa trên ngữ cảnh đã cung cấp.
 8. Câu hỏi và câu trả lời được lưu vào Amazon DynamoDB.
 9. Kết quả được trả về giao diện người dùng.
 
@@ -128,6 +128,7 @@ Hệ thống hướng tới các nhóm người dùng sau:
 | Amazon Cognito        | Quản lý đăng ký, đăng nhập và xác thực người dùng        |
 | Amazon S3             | Lưu trữ tài liệu được người dùng tải lên                 |
 | Amazon Textract       | Trích xuất văn bản từ PDF và hình ảnh                    |
+| Amazon SNS           | Nhận thông báo hoàn thành từ Textract và kích hoạt (trigger) hàm Lambda backend    |
 | AWS Lambda            | Xử lý logic backend, tài liệu, embedding và lịch sử chat |
 | Amazon Bedrock        | Tạo vector embedding và sinh câu trả lời                 |
 | Amazon RDS PostgreSQL | Lưu trữ tài liệu, đoạn nội dung và vector embedding      |

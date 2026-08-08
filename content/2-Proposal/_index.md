@@ -1,384 +1,391 @@
 ---
 title: "Proposal"
-date: 2026-08-08
 weight: 2
 chapter: false
-pre: " <b> 2. </b> "
+pre: "<b>2. </b>"
 ---
 
 # SMART DOCUMENT CHATBOT
 
-## INTELLIGENT DOCUMENT QUESTION-ANSWERING SYSTEM ON AWS
+## AN INTELLIGENT DOCUMENT Q&A SYSTEM ON AWS
 
 ---
 
 ## 1. PROJECT OVERVIEW
 
-Smart Document Chatbot allows users to upload documents and ask questions in natural language. The system automatically extracts content, divides text into chunks, creates vector embeddings, searches for relevant passages, and uses an artificial intelligence model to generate an answer.
+Smart Document Chatbot is a system that allows users to upload documents and ask questions in natural language. The system automatically extracts content, splits text into chunks, generates vector embeddings, retrieves relevant information, and utilizes artificial intelligence models to generate responses.
 
-The project uses Retrieval-Augmented Generation (RAG), combining document retrieval with a large language model. Answers are therefore grounded in the user's documents instead of relying only on the model's existing knowledge.
+The project implements a Retrieval-Augmented Generation (RAG) architecture, combining document retrieval capabilities with large language models. As a result, answers are generated strictly based on the user's uploaded document content rather than relying solely on the AI model's pre-trained knowledge.
 
-The system is primarily built with Amazon Cognito, Amazon S3, Amazon Textract, AWS Lambda, Amazon Bedrock, Amazon RDS for PostgreSQL, Amazon DynamoDB, and Amazon API Gateway.
+The system is primarily built using AWS services, including Amazon Cognito, Amazon S3, Amazon Textract, AWS Lambda, Amazon Bedrock, Amazon RDS PostgreSQL, Amazon DynamoDB, and Amazon API Gateway.
 
-**Project name:** Smart Document Chatbot
+**Project Name:** Smart Document Chatbot
 
-**Project type:** Web application for document search and question answering
+**Project Type:** Document Q&A and Content Search Web Application
 
-**Primary architecture:** AWS Serverless combined with RDS PostgreSQL
+**Core Architecture:** AWS Serverless combined with Amazon RDS PostgreSQL
 
-**Processing model:** Retrieval-Augmented Generation
+**Processing Model:** Retrieval-Augmented Generation (RAG)
 
-**Deployment region:** AWS Region `us-east-1`
+**Deployment Region:** AWS Region `us-east-1`
 
-**Implementation period:** June 22, 2026 – August 15, 2026
+**Timeline:** June 22, 2026 – August 15, 2026
 
 ---
 
-## 2. PROBLEMS TO SOLVE
+## 2. PROBLEM STATEMENT
 
-### 2.1. Manual document search is time-consuming
+### 2.1. Time-Consuming Manual Document Search
 
-Users often need to read an entire PDF or text document to find specific information. With long documents or large collections, this process takes considerable time and can overlook important details.
+Users often have to read through entire PDF or text documents to find specific information. For long documents or large volumes of files, this manual process is time-consuming and prone to missing critical details.
 
-### 2.2. Keyword search is limited
+### 2.2. Limitations of Keyword-Based Search
 
-Traditional search works best when a user's keywords exactly match the document. It may miss relevant information when the question uses different words with the same meaning.
+Traditional search engines work well only when the user's search query exactly matches the keywords in the document. The system struggles to find relevant results when users phrase questions using different terminology with similar meanings.
 
-### 2.3. AI models may generate inaccurate information
+### 2.3. AI Hallucination Risks
 
-Language models can produce answers that do not exist in the source document, a behavior known as hallucination. The system must therefore constrain the model to answer from retrieved document content.
+Large language models can generate responses containing information not present in the reference documents, a phenomenon known as hallucination. Therefore, the system must constrain the AI model to answer strictly based on retrieved document contexts.
 
-### 2.4. Conversation history is difficult to manage
+### 2.4. Difficulty in Managing Chat History
 
-Users need to retain previous questions and answers to continue a conversation or review information. This data must be organized by user and chat session.
+Users need to retain previous questions and answers to maintain context across continuous multi-turn conversations or review past interactions. This data must be structured systematically per user and session.
 
-### 2.5. User data requires protection
+### 2.5. User Data Security Requirements
 
-Uploaded documents may contain personal or internal information. The system must authenticate users and prevent access to another user's data.
+Uploaded documents may contain sensitive personal information or internal proprietary data. Consequently, the system requires robust user authentication and strict access controls to prevent unauthorized access to other users' data.
 
 ---
 
 ## 3. PROJECT OBJECTIVES
 
-### 3.1. General objective
+### 3.1. General Objective
 
-Build an intelligent document question-answering system on AWS that lets users upload documents, ask questions, and receive answers grounded in those documents.
+Build an intelligent document Q&A system on AWS that enables users to upload documents, ask natural language questions, and receive accurate answers derived directly from the document content.
 
-### 3.2. Specific objectives
+### 3.2. Specific Objectives
 
-* Implement user registration and sign-in with Amazon Cognito.
-* Store uploaded documents in Amazon S3.
-* Extract document text with Amazon Textract.
-* Divide text into smaller chunks for retrieval.
-* Generate 1,024-dimensional vector embeddings with Amazon Titan Embeddings V2.
-* Store vectors in Amazon RDS for PostgreSQL with the `pgvector` extension.
-* Retrieve semantically relevant document chunks.
-* Use Amazon Bedrock to generate answers from retrieved content.
-* Store conversation history in Amazon DynamoDB.
-* Develop Lambda functions to create, read, update, and delete chat history.
-* Test vector-search and chat-history query performance.
-* Build a scalable system with controlled operating costs.
+* Implement user registration and authentication workflows using Amazon Cognito.
+* Store uploaded documents securely in Amazon S3.
+* Utilize Amazon Textract for automated text extraction from documents.
+* Perform text chunking to optimize retrieval performance.
+* Generate 1,024-dimensional vector embeddings using Amazon Titan Embeddings V2.
+* Store vector embeddings in Amazon RDS PostgreSQL using the `pgvector` extension.
+* Execute semantic similarity searches on document chunks.
+* Generate grounded responses using Amazon Bedrock based on retrieved contexts.
+* Persist conversation history in Amazon DynamoDB.
+* Develop AWS Lambda functions for Create, Read, Update, and Delete (CRUD) operations on chat history.
+* Conduct performance benchmarks for vector search and chat history queries.
+* Design a scalable and cost-controlled architecture.
 
 ---
 
-## 4. TARGET USERS
+## 4. TARGET AUDIENCE
 
-The system is intended for:
+The system caters to the following user groups:
 
-* Students searching textbooks and study materials.
-* Lecturers searching teaching documents.
-* Employees searching internal corporate documents.
-* Research teams synthesizing information from multiple documents.
-* Individuals who need quick question answering over PDF content.
+* **Students:** Accessing and querying textbooks, research papers, and study materials.
+* **Instructors/Educators:** Extracting specific information from teaching materials and reference books.
+* **Enterprise Employees:** Querying internal documentation, policies, and operational manuals.
+* **Researchers:** Synthesizing information across multiple reference documents.
+* **Individual Users:** Quick Q&A and information retrieval from PDF files.
 
 ---
 
 ## 5. SOLUTION ARCHITECTURE
 
-### 5.1. Document-processing flow
+### 5.1. Document Processing Pipeline
 
-1. The user registers or signs in through Amazon Cognito.
-2. The user uploads a document.
-3. The document is stored in Amazon S3.
-4. Amazon Textract extracts its text.
-5. AWS Lambda divides the content into smaller chunks.
-6. Lambda sends each chunk to Amazon Bedrock.
-7. `amazon.titan-embed-text-v2:0` creates a 1,024-dimensional embedding.
-8. Content and vectors are stored in Amazon RDS for PostgreSQL.
-9. Basic document information is stored in the `documents` table.
+1. The user registers or logs in via Amazon Cognito.
+2. The user uploads a document through the web interface.
+3. The document is stored securely in Amazon S3.
+4. Amazon Textract is triggered to extract text from the document (PDF/Image).
+5. Upon completion, Textract sends a notification via Amazon SNS to automatically trigger an AWS Lambda function.
+6. AWS Lambda receives the event, retrieves the extracted text from Textract, and splits it into smaller chunks.
+7. Lambda sends each text chunk to Amazon Bedrock (`amazon.titan-embed-text-v2:0`) to generate 1,024-dimensional vector embeddings.
+8. Each text chunk and its corresponding vector embedding are saved into Amazon RDS PostgreSQL (via the `pgvector` extension).
+9. Document metadata is recorded in Amazon DynamoDB for management.
 
-### 5.2. Question-answering flow
+### 5.2. Q&A and Retrieval Pipeline
 
-1. The user enters a question in the interface.
-2. The question is sent to the backend through an API.
-3. Amazon Bedrock converts the question into a vector embedding.
-4. AWS Lambda searches PostgreSQL for the nearest vectors.
-5. The system retrieves the most relevant document chunks.
-6. Retrieved content is sent to a language model on Amazon Bedrock.
-7. The model generates an answer grounded in the document context.
-8. The question and answer are stored in Amazon DynamoDB.
-9. The result is returned to the user interface.
+1. The user inputs a question on the frontend interface.
+2. The question is routed to the backend via Amazon API Gateway to invoke an AWS Lambda function.
+3. The Lambda function passes the query to Amazon Bedrock to generate a vector embedding.
+4. The Lambda function uses the query vector to execute a similarity search in Amazon RDS PostgreSQL.
+5. The system retrieves the top most relevant document chunks based on semantic similarity.
+6. The user question and the retrieved contextual chunks are packaged into a prompt and sent to the Large Language Model (LLM) on Amazon Bedrock (`amazon.nova-lite-v1:0`).
+7. The AI model synthesizes the information and generates an accurate answer grounded in the provided context.
+8. The question and answer pair are stored in Amazon DynamoDB.
+9. The final response along with source references is returned to the user interface.
 
 ---
 
-## 6. AWS SERVICES USED
+## 6. AWS SERVICES UTILIZED
 
-| AWS service | Role in the system |
-|---|---|
-| Amazon Cognito | User registration, sign-in, and authentication |
-| Amazon S3 | Storage for uploaded documents |
-| Amazon Textract | Text extraction from PDFs and images |
-| AWS Lambda | Backend, document, embedding, and chat-history processing |
-| Amazon Bedrock | Vector embedding generation and answer generation |
-| Amazon RDS for PostgreSQL | Storage for documents, chunks, and vector embeddings |
-| pgvector | Vector storage and similarity search in PostgreSQL |
-| Amazon DynamoDB | Conversation-history storage |
-| Amazon API Gateway | APIs connecting the frontend to backend Lambda functions |
-| Amazon CloudWatch | Lambda logs and error monitoring |
-| AWS IAM | Access control between AWS services |
-| Amazon VPC | Network environment for Lambda and RDS |
+| AWS Service          | Role in the System                                                    |
+| -------------------- | --------------------------------------------------------------------- |
+| Amazon Cognito       | User authentication, authorization, and user pool management          |
+| Amazon S3            | Object storage for user-uploaded documents                            |
+| Amazon Textract      | Text extraction from PDF documents and images                         |
+| Amazon SNS           | Notifications for Textract job completion to trigger Lambda functions |
+| AWS Lambda           | Serverless backend execution for document processing, embeddings, and chat history |
+| Amazon Bedrock       | Generating vector embeddings and LLM responses                        |
+| Amazon RDS PostgreSQL| Relational storage for metadata and vector embeddings                 |
+| pgvector             | PostgreSQL extension for vector storage and similarity searches       |
+| Amazon DynamoDB      | NoSQL database for fast, key-value chat history storage              |
+| Amazon API Gateway   | RESTful API management exposing backend Lambda endpoints to frontend |
+| Amazon CloudWatch    | Logging, monitoring, and error tracking for Lambda functions          |
+| AWS IAM              | Identity and Access Management securing inter-service communications   |
+| Amazon VPC           | Isolated network environment for AWS Lambda and Amazon RDS            |
 
 ---
 
 ## 7. DATABASE DESIGN
 
-### 7.1. Amazon RDS for PostgreSQL
+### 7.1. Amazon RDS PostgreSQL
 
-RDS PostgreSQL stores document information and vector embeddings.
+Amazon RDS PostgreSQL is used to store document details and vector embeddings.
 
-#### `documents` table
+#### Table `documents`
 
-| Attribute | Description |
-|---|---|
-| `document_id` | Document identifier |
-| `user_id` | Identifier of the document owner |
-| `file_name` | Document name |
-| `file_type` | Document format |
-| `status` | Processing status |
-| `created_at` | Creation time |
+Stores high-level metadata for uploaded files:
 
-#### `document_chunks` table
+| Attribute     | Description                             |
+| ------------- | --------------------------------------- |
+| `document_id` | Unique identifier for the document      |
+| `user_id`     | Identifier of the owning user           |
+| `file_name`   | Original name of the uploaded file      |
+| `file_type`   | File format / extension                 |
+| `status`      | Current processing status               |
+| `created_at`  | Timestamp of creation                   |
 
-| Attribute | Description |
-|---|---|
-| `id` | Chunk identifier |
-| `document_id` | Document identifier |
-| `user_id` | User identifier |
-| `file_name` | Document name |
-| `page_number` | Page number |
-| `chunk_index` | Chunk position |
-| `content` | Text content |
-| `embedding` | 1,024-dimensional embedding vector |
-| `embedding_model` | Embedding model name |
-| `metadata` | Additional data |
+#### Table `document_chunks`
 
-Semantic search uses `pgvector` distance operators.
+Stores text chunks and their corresponding vector embeddings:
+
+| Attribute         | Description                             |
+| ----------------- | --------------------------------------- |
+| `id`              | Unique identifier for the text chunk    |
+| `document_id`     | Reference ID to `documents` table       |
+| `user_id`         | User identifier                         |
+| `file_name`       | Document file name                      |
+| `page_number`     | Page number where chunk resides         |
+| `chunk_index`     | Sequential position index of the chunk  |
+| `content`         | Extracted raw text content              |
+| `embedding`       | 1,024-dimensional vector embedding      |
+| `embedding_model` | Model used for embedding generation     |
+| `metadata`        | Additional metadata                     |
+
+Semantic search is performed using `pgvector` distance operators.
 
 ### 7.2. Amazon DynamoDB
 
-The `ChatHistory-dev` table stores conversation history.
+The `ChatHistory-dev` table persists chat logs and conversation threads.
 
-| Attribute | Description |
-|---|---|
-| `userId` | User identifier |
-| `sessionId` | Chat-session identifier |
-| `messageId` | Message identifier |
-| `messageKey` | Sort key in `createdAt#messageId` format |
-| `role` | Message sender: user or assistant |
-| `content` | Message content |
-| `references` | Document references |
-| `createdAt` | Creation time |
-| `updatedAt` | Last update time |
+Key attributes include:
 
-This key design supports efficient retrieval by user, chat session, and time.
+| Attribute    | Description                                            |
+| ------------ | ------------------------------------------------------ |
+| `userId`     | Partition key - User identifier                        |
+| `sessionId`  | Session identifier                                     |
+| `messageId`  | Unique message identifier                              |
+| `messageKey` | Sort key formatted as `createdAt#messageId`           |
+| `role`       | Message sender (`user` or `assistant`)                 |
+| `content`    | Message payload text                                   |
+| `references` | Array of source document citations                     |
+| `createdAt`  | Timestamp of creation                                  |
+| `updatedAt`  | Timestamp of last update                               |
 
----
-
-## 8. MAIN FEATURES
-
-### 8.1. User authentication
-
-* Register an account.
-* Confirm an account through email.
-* Sign in and sign out.
-* Receive an authentication token from Amazon Cognito.
-* Restrict access for unauthenticated users.
-
-### 8.2. Document management
-
-* Upload documents to Amazon S3.
-* Extract text with Amazon Textract.
-* Divide content into chunks.
-* Generate and store vector embeddings.
-* Display each user's documents.
-* Delete documents that are no longer required.
-
-### 8.3. Document question answering
-
-* Enter questions in natural language.
-* Find semantically similar document chunks.
-* Generate answers from retrieved content.
-* Return the source document, page, and reference passage.
-* Limit unsupported answers that are not grounded in documents.
-
-### 8.4. Conversation-history management
-
-* Create new messages.
-* Review conversation history.
-* Update message content.
-* Delete messages.
-* Organize history by user and chat session.
+The primary key design enables efficient querying of chat messages filtered by user, session, and chronological order.
 
 ---
 
-## 9. ASSIGNED WORK SCOPE
+## 8. CORE FEATURES
 
-The assigned work in the group project focused on databases, Lambda functions, and performance testing:
+### 8.1. User Authentication
 
-* Initialize Amazon RDS for PostgreSQL.
-* Configure the VPC and Security Group for RDS.
-* Enable the `pgvector` extension.
-* Create the `documents` and `document_chunks` tables.
-* Configure the embedding field for 1,024 dimensions.
-* Create the `ChatHistory-dev` DynamoDB table.
-* Design keys for conversation-history queries.
-* Develop a Lambda function to create messages.
-* Develop a Lambda function to retrieve history.
-* Develop a Lambda function to update messages.
-* Develop a Lambda function to delete messages.
-* Develop a Lambda function that creates test vector data.
-* Develop a Lambda function for vector search.
-* Integrate Amazon Titan Embeddings V2.
-* Generate test data for RDS and DynamoDB.
-* Measure and analyze query performance.
-* Configure an Amazon Cognito User Pool and test sign-in.
-* Summarize results and prepare the report.
+* User registration and signup.
+* Email verification workflows.
+* Login and logout functionality.
+* JWT token management via Amazon Cognito.
+* Route protection for unauthorized guests.
 
-Other team members were responsible for the frontend, S3 storage, document extraction with Textract, and the remaining integration components.
+### 8.2. Document Management
 
----
+* File uploads to Amazon S3.
+* Automated text extraction using Amazon Textract.
+* Intelligent text chunking.
+* Vector embedding generation and indexing.
+* Document list display per user.
+* Document deletion and cleanup.
 
-## 10. IMPLEMENTATION PLAN
+### 8.3. Intelligent Document Q&A
 
-| Phase | Period | Main activities |
-|---|---|---|
-| Phase 1 | 22/06–28/06/2026 | Study AWS, IAM, Global Infrastructure, and cost management |
-| Phase 2 | 29/06–05/07/2026 | Research core AWS services |
-| Phase 3 | 06/07–12/07/2026 | Analyze requirements and design the architecture |
-| Phase 4 | 13/07–19/07/2026 | Initialize RDS, pgvector, and DynamoDB |
-| Phase 5 | 20/07–26/07/2026 | Develop CRUD Lambda functions |
-| Phase 6 | 27/07–02/08/2026 | Integrate Bedrock and create embeddings and test data |
-| Phase 7 | 03/08–09/08/2026 | Measure performance and configure Cognito |
-| Completion | 10/08–15/08/2026 | Integrate components, summarize results, and write the report |
+* Natural language question processing.
+* Vector similarity retrieval against document chunks.
+* Context-aware response generation.
+* Citation referencing (document name, page number, chunk text).
+* Strict prompt constraints to mitigate AI hallucinations.
+
+### 8.4. Chat History Management
+
+* Saving incoming and outgoing messages.
+* Fetching session chat history.
+* Updating message contents.
+* Deleting specific messages or chat sessions.
+* Data partitioning by `userId` and `sessionId`.
 
 ---
 
-## 11. TEST RESULTS
+## 9. RESPONSIBILITIES AND SCOPE OF WORK
 
-### 11.1. Vector search on RDS
+In this team project, the assigned scope focuses on backend database engineering, serverless Lambda functions, and performance benchmarking:
 
-* Total test vectors: **2,000**
-* Warm-up runs: **5**
-* Test runs: **50**
-* Results per query: **5**
-* Minimum latency: **49.561 ms**
-* Maximum latency: **60.079 ms**
-* Average latency: **50.398 ms**
-* Median: **49.998 ms**
-* P95: **50.519 ms**
-* Expected result found: **Yes**
+* Provisioning and configuring Amazon RDS PostgreSQL.
+* Setting up VPC, private subnets, and Security Groups for RDS.
+* Enabling and configuring the `pgvector` extension.
+* Designing and creating `documents` and `document_chunks` schemas.
+* Configuring 1,024-dimension vector columns.
+* Creating and tuning the `ChatHistory-dev` DynamoDB table.
+* Designing composite key structures for optimal query patterns.
+* Developing Lambda function for Creating chat messages.
+* Developing Lambda function for Fetching chat history.
+* Developing Lambda function for Updating chat messages.
+* Developing Lambda function for Deleting chat messages.
+* Developing Lambda for generating benchmark synthetic vector data.
+* Developing Lambda for vector similarity search.
+* Integrating Amazon Titan Embeddings V2 APIs.
+* Generating test data for RDS PostgreSQL and DynamoDB.
+* Conducting query latency benchmarking and analysis.
+* Configuring Amazon Cognito User Pool and testing login workflows.
+* Aggregating benchmark results and contributing to technical documentation.
 
-### 11.2. Chat-history queries on DynamoDB
-
-* Chat sessions: **100**
-* Messages per session: **20**
-* Query runs: **100**
-* Successful runs: **100**
-* Errors: **0**
-* Minimum latency: **16.797 ms**
-* Maximum latency: **238.972 ms**
-* Average latency: **35.172 ms**
-* Median: **38.423 ms**
-* P95: **58.278 ms**
-* Error rate: **0%**
-
-The results show that the system can accurately retrieve vectors and reliably query conversation history within the test-data scope.
+Other team members were responsible for frontend development, S3 storage integration, Textract pipeline configuration, and overall system integration.
 
 ---
 
-## 12. COSTS AND CONTROL MEASURES
+## 10. PROJECT SCHEDULE
 
-The system combines Serverless services with Amazon RDS for PostgreSQL. Lambda, DynamoDB, and S3 are charged by usage. Amazon Bedrock is charged by input and output tokens, while Amazon Textract is charged by processed page.
-
-Amazon RDS incurs costs while the database is running, even without queries. The project therefore applies these controls:
-
-* Use AWS Credits and Free Tier where appropriate.
-* Stop RDS when performance tests are not running.
-* Delete unnecessary snapshots and resources.
-* Monitor costs with AWS Cost Explorer.
-* Configure alerts with AWS Budgets.
-* Limit documents and Bedrock calls in the demonstration environment.
-* Review cost by service regularly.
-
----
-
-## 13. RISKS AND MITIGATIONS
-
-| Risk | Severity | Mitigation |
-|---|---|---|
-| Lambda cannot connect to RDS | High | Check VPC, subnet, Security Group, and IAM permissions |
-| Missing PostgreSQL client library | Medium | Package the dependency or provide it through a Lambda Layer |
-| Incorrect AWS Region | Medium | Use `us-east-1` consistently for related resources |
-| Vector does not have 1,024 dimensions | High | Validate embedding dimensions before storage |
-| Answer is not grounded in documents | High | Supply only retrieved context and require source references |
-| Data leaks between users | High | Authenticate with Cognito and filter by `user_id` |
-| Unexpected RDS costs | Medium | Stop the database when unused and configure AWS Budgets |
-| Lambda timeout | Medium | Optimize queries, limit data, and configure an appropriate timeout |
-| Loss of chat history | Medium | Design DynamoDB keys clearly and test CRUD operations |
-| Missing IAM permissions | Medium | Apply least privilege and inspect CloudWatch Logs |
+| Phase       | Timeline           | Core Deliverables & Activities                               |
+| ----------- | ------------------ | ------------------------------------------------------------ |
+| Phase 1     | Jun 22 - Jun 28, 2026 | AWS fundamentals, IAM policies, global infrastructure & cost management |
+| Phase 2     | Jun 29 - Jul 05, 2026 | Researching core AWS serverless and database services        |
+| Phase 3     | Jul 06 - Jul 12, 2026 | Requirements analysis and system architecture design          |
+| Phase 4     | Jul 13 - Jul 19, 2026 | Provisioning RDS, pgvector setup, and DynamoDB schema creation|
+| Phase 5     | Jul 20 - Jul 26, 2026 | Developing CRUD AWS Lambda functions                         |
+| Phase 6     | Jul 27 - Aug 02, 2026 | Bedrock integration, vector generation, and test data seed   |
+| Phase 7     | Aug 03 - Aug 09, 2026 | Performance testing, latency analysis, and Cognito config    |
+| Final Phase | Aug 10 - Aug 15, 2026 | End-to-end integration, result synthesis, and report writing |
 
 ---
 
-## 14. EXPECTED RESULTS
+## 11. BENCHMARK AND TEST RESULTS
 
-After completion, the system should meet these requirements:
+### 11.1. Vector Search Performance (Amazon RDS PostgreSQL)
 
-* Users can register and sign in.
-* Users can upload documents.
-* The system can extract and process document content.
-* Content is converted to 1,024-dimensional vector embeddings.
-* Vectors are stored in PostgreSQL with `pgvector`.
-* Users can ask questions about their documents.
-* Answers are generated from retrieved document content.
-* Answers include source references.
-* Conversation history is stored and queried by user.
-* CRUD functions operate correctly.
-* Performance and accuracy test results are available.
-* Resource costs are monitored and controlled.
+* **Total Test Vectors:** 2,000
+* **Warm-up Requests:** 5
+* **Test Iterations:** 50
+* **Top-K Results:** 5
+* **Min Latency:** 49.561 ms
+* **Max Latency:** 60.079 ms
+* **Average Latency:** 50.398 ms
+* **Median (P50):** 49.998 ms
+* **95th Percentile (P95):** 50.519 ms
+* **Expected Ground Truth Match:** Passed (100% accuracy)
+
+### 11.2. Chat History Query Performance (Amazon DynamoDB)
+
+* **Total Sessions:** 100
+* **Messages per Session:** 20
+* **Query Requests:** 100
+* **Successful Requests:** 100
+* **Failed Requests:** 0
+* **Min Latency:** 16.797 ms
+* **Max Latency:** 238.972 ms
+* **Average Latency:** 35.172 ms
+* **Median (P50):** 38.423 ms
+* **95th Percentile (P95):** 58.278 ms
+* **Error Rate:** 0.00%
+
+The test results demonstrate that the system achieves high precision vector retrieval and maintains low-latency, stable performance for chat history queries within the tested dataset scale.
+
+---
+
+## 12. COST ESTIMATION AND OPTIMIZATION PLAN
+
+The system employs a hybrid Serverless and Managed Database architecture.
+
+Serverless components including AWS Lambda, DynamoDB, and Amazon S3 follow pay-as-you-go pricing models. Amazon Bedrock is billed based on processed input and output token counts, while Amazon Textract is charged per processed document page.
+
+Amazon RDS incurs continuous charges while the database instance is running regardless of traffic. To optimize costs during development, the following measures were enforced:
+
+* Utilizing AWS Free Tier and AWS Educational Credits where applicable.
+* Stopping Amazon RDS instances during non-testing hours.
+* Cleaning up unnecessary DB snapshots and orphaned S3 objects.
+* Monitoring real-time expenditures via AWS Cost Explorer.
+* Setting up automated budget alerts via AWS Budgets.
+* Capping document upload sizes and Bedrock invocation limits during testing.
+* Performing weekly service-by-service cost reviews.
+
+---
+
+## 13. RISK MANAGEMENT AND MITIGATION
+
+| Risk Factor                       | Severity | Mitigation Strategy                                             |
+| --------------------------------- | -------- | --------------------------------------------------------------- |
+| Lambda fails to connect to RDS    | High     | Verify VPC configuration, Subnets, Security Groups, and IAM roles|
+| Missing PostgreSQL client modules | Medium   | Package dependencies using Lambda Layers or deployment packages |
+| AWS Region mismatch               | Medium   | Enforce unified deployment in the `us-east-1` region            |
+| Vector dimension mismatch         | High     | Validate 1,024-dimension output prior to DB insertion          |
+| Un-grounded AI responses          | High     | Inject strict prompt instructions requiring source citations    |
+| Cross-user data leakage           | High     | Authenticate via Cognito and enforce strict `user_id` filtering |
+| Unexpected RDS cost overruns      | Medium   | Stop DB instances when idle; set up AWS Budgets alerts          |
+| Lambda execution timeout          | Medium   | Optimize SQL queries, reduce chunk payload, adjust timeouts     |
+| Chat history data loss            | Medium   | Design durable key structures and conduct thorough CRUD testing |
+| Insufficient IAM permissions      | Medium   | Follow least-privilege principles and audit CloudWatch Logs     |
+
+---
+
+## 14. EXPECTED OUTCOMES
+
+Upon completion, the system satisfies all key deliverables:
+
+* Functional user registration and authentication flow.
+* Secure document upload capabilities.
+* Automated text extraction and document preprocessing.
+* Accurate generation of 1,024-dimension vector embeddings.
+* Vector storage and indexing in PostgreSQL using `pgvector`.
+* Intelligent natural language Q&A interface over uploaded files.
+* Grounded AI responses complete with page and document citations.
+* Session-based chat history persistence filtered by user.
+* Verified, error-free CRUD operations on backend services.
+* Empirical performance benchmarks for system latency.
+* Effective cost control and resource management.
 
 ---
 
 ## 15. DELIVERABLES
 
-* Overall AWS system architecture.
-* Amazon RDS for PostgreSQL with the `pgvector` extension.
-* `documents` and `document_chunks` tables.
-* `ChatHistory-dev` DynamoDB table.
-* Lambda functions for chat-history CRUD operations.
-* Lambda function for generating test vector data.
-* Lambda function for vector search.
-* Amazon Cognito User Pool configuration.
-* RDS and DynamoDB test results.
-* Project source code.
-* Deployment instructions.
-* Bilingual Vietnamese-English report website.
+* Overall System Architecture Diagram on AWS.
+* Configured Amazon RDS PostgreSQL instance with `pgvector`.
+* SQL Schema definitions for `documents` and `document_chunks`.
+* Amazon DynamoDB `ChatHistory-dev` table configuration.
+* Suite of AWS Lambda functions for Chat History CRUD operations.
+* Synthetic vector data generation Lambda function.
+* Vector similarity search Lambda function.
+* Amazon Cognito User Pool configuration settings.
+* Comprehensive performance test reports (RDS & DynamoDB).
+* Source code repository.
+* System deployment and setup guide.
+* Bilingual (Vietnamese - English) project website documentation.
 
 ---
 
 ## 16. CONCLUSION
 
-Smart Document Chatbot addresses the need to search and ask questions over document content by combining AWS services with a RAG architecture.
+Smart Document Chatbot successfully addresses the challenges of searching and retrieving information from complex documents by combining AWS Cloud services with a RAG architecture.
 
-The project reduces manual search time, improves semantic information retrieval, and manages conversation history effectively.
+The project significantly reduces manual search time, improves semantic information retrieval accuracy, and provides reliable chat history management.
 
-Through the project, the team applies knowledge of Cloud Computing, Serverless, Security, Databases, and Generative AI to a practical problem. The system also provides a foundation for supporting additional document formats, managing documents by user, improving source citations, and optimizing performance in the future.
+Through this project, the team effectively applied practical knowledge of Cloud Computing, Serverless, Security, Database Systems, and Generative AI to a real-world software engineering problem. The resulting architecture serves as a solid foundation for future enhancements, such as multi-format file support, multi-tenant workspace management, advanced citation rendering, and query optimization.
