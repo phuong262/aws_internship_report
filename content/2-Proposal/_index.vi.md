@@ -125,6 +125,7 @@ Hệ thống hướng tới các nhóm người dùng sau:
 
 | Dịch vụ AWS           | Vai trò trong hệ thống                                   |
 | --------------------- | -------------------------------------------------------- |
+| AWS Amplify | Lưu trữ (hosting) và tự động triển khai (deploy) ứng dụng giao diện Frontend (React). Tích hợp sẵn mạng phân phối CDN toàn cầu và tự động quản lý chứng chỉ bảo mật HTTPS. |
 | Amazon Cognito        | Quản lý đăng ký, đăng nhập và xác thực người dùng        |
 | Amazon S3             | Lưu trữ tài liệu được người dùng tải lên                 |
 | Amazon Textract       | Trích xuất văn bản từ PDF và hình ảnh                    |

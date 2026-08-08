@@ -124,6 +124,7 @@ The system caters to the following user groups:
 
 | AWS Service          | Role in the System                                                    |
 | -------------------- | --------------------------------------------------------------------- |
+| AWS Amplify | Hosting and automated deployment for frontend applications (React). Includes built-in global CDN integration and automated HTTPS security certificate management. |
 | Amazon Cognito       | User authentication, authorization, and user pool management          |
 | Amazon S3            | Object storage for user-uploaded documents                            |
 | Amazon Textract      | Text extraction from PDF documents and images                         |
