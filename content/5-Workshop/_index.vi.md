@@ -23,7 +23,6 @@ Người học sẽ được thực hành từ khâu chuẩn bị tài nguyên, 
    - 5.1.2 [Đặc tả Kiến trúc Backend & RAG Pipeline](5.1-Workshop-overview/5.1.2%20-backend-architecture/)
    - 5.1.3 [Sơ đồ Kiến trúc Tổng quan trên AWS](5.1-Workshop-overview/5.1.3%20-overall-aws-architecture/)
    - 5.1.4 [Danh sách các Dịch vụ AWS Sử dụng](5.1-Workshop-overview/5.1.4%20-aws-services-used/)
-   - 5.1.5 [Đặc tả Giao diện và Chức năng Hệ thống](5.1-Workshop-overview/5.1.5%20-ui-function/)
 
 2. **[Chuẩn bị Môi trường (Prerequisites)](5.2-Prerequiste/)**
    - 5.2.1 [Chuẩn bị Mã nguồn Dự án](5.2-Prerequiste/5.2.1-source-code-preparation/)

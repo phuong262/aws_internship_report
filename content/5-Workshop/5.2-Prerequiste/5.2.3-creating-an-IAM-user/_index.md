@@ -9,7 +9,7 @@ pre : " <b> 5.2.3. </b> "
 
 ### 1. Search for IAM in the AWS Console Search Bar
 
-![findIAM](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/findIAM.png)
+![findIAM](/images/5-Workshop/5.2-Prerequisite/findIAM.png)
 
 ### 2. Create an IAM User Group
 
@@ -17,22 +17,22 @@ pre : " <b> 5.2.3. </b> "
 
   * Select **Create group**.
 
-![IAMUserGroup](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/IAMUserGroup.png)
+![IAMUserGroup](/images/5-Workshop/5.2-Prerequisite/IAMUserGroup.png)
 
 * In the **Create user group** interface:
 
   * **User group name**: Enter `AdminGroup`.
   * **Attach permissions policies - Optional**: Search for `AdministratorAccess` and select it.
 
-![createUserGroup](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/createUserGroup.png)
+![createUserGroup](/images/5-Workshop/5.2-Prerequisite/createUserGroup.png)
 
 * Scroll to the bottom of the page and select **Create user group**.
 
-![createUserGroupNext](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/createUserGroupNext.png)
+![createUserGroupNext](/images/5-Workshop/5.2-Prerequisite/createUserGroupNext.png)
 
 * Verify that the IAM user group was created successfully.
 
-![createUserGroupSuccess](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/createUserGroupSuccess.png)
+![createUserGroupSuccess](/images/5-Workshop/5.2-Prerequisite/createUserGroupSuccess.png)
 
 ### 3. Create IAM Users
 
@@ -40,7 +40,7 @@ pre : " <b> 5.2.3. </b> "
 
   * Select **Create user**.
 
-![IAMUser](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/IAMUser.png)
+![IAMUser](/images/5-Workshop/5.2-Prerequisite/IAMUser.png)
 
 * In the **Specify user details** interface:
 
@@ -48,7 +48,7 @@ pre : " <b> 5.2.3. </b> "
   * Select **Provide user access to the AWS Management Console - optional**.
   * Then, select **Next**.
 
-![specify](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/specify.png)
+![specify](/images/5-Workshop/5.2-Prerequisite/specify.png)
 
 * In the **Set permissions** interface:
 
@@ -56,21 +56,21 @@ pre : " <b> 5.2.3. </b> "
   * **User groups**: Select the newly created **AdminGroup**.
   * Then, select **Next**.
 
-![setPermission](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/setPermission.png)
+![setPermission](/images/5-Workshop/5.2-Prerequisite/setPermission.png)
 
 * In the **Review and create** interface:
 
   * Review the IAM user information.
   * Select **Create user**.
 
-![reviewAndCreate](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/reviewAndCreate.png)
+![reviewAndCreate](/images/5-Workshop/5.2-Prerequisite/reviewAndCreate.png)
 
 * In the **Retrieve password** interface:
 
   * **Note:** Select **Download .csv file** to save the login credentials.
   * Then, select **Return to user list**.
 
-![success](/images/5-Workshop/5.2-Prerequisite/5.2.3-creating-an-IAM-user/success.png)
+![success](/images/5-Workshop/5.2-Prerequisite/success.png)
 
 ### 4. Continue Creating Accounts
 

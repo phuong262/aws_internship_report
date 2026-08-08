@@ -23,7 +23,6 @@ Learners will practice from resource preparation, Docker Container packaging, cl
    - 5.1.2 [Backend Architecture & RAG Pipeline Specification](5.1-Workshop-overview/5.1.2%20-backend-architecture/)
    - 5.1.3 [Overall AWS Architecture Diagram](5.1-Workshop-overview/5.1.3%20-overall-aws-architecture/)
    - 5.1.4 [AWS Services Summary](5.1-Workshop-overview/5.1.4%20-aws-services-used/)
-   - 5.1.5 [UI Specification & System Functionality](5.1-Workshop-overview/5.1.5%20-ui-function/)
 
 2. **[Prerequisites](5.2-Prerequiste/)**
    - 5.2.1 [Source Code Preparation](5.2-Prerequiste/5.2.1-source-code-preparation/)

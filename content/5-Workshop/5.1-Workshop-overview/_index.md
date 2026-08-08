@@ -20,4 +20,3 @@ The workshop guides learners step-by-step through deploying a battle-tested Ente
 2. [Backend Architecture & RAG Pipeline Specification](5.1.2%20-backend-architecture/)
 3. [Overall AWS Architecture Diagram](5.1.3%20-overall-aws-architecture/)
 4. [AWS Services Used Summary](5.1.4%20-aws-services-used/)
-5. [UI Specification and System Functionality](5.1.5%20-ui-function/)

@@ -9,7 +9,7 @@ pre : " <b> 5.2.2. </b> "
 
 ### 1. Make Sure You Have an AWS Account
 
-![account](/images/5-Workshop/5.2-Prerequisite/5.2.2-aws-account-preparation/account.png)
+![account](/images/5-Workshop/5.2-Prerequisite/account.png)
 
 ### 2. If You Do Not Have an AWS Account
 

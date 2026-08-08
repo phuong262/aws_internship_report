@@ -8,11 +8,11 @@ pre : " <b> 5.2.1. </b> "
 ---
 ### 1. Access the GitHub Repository
 
-* Access the project's GitHub repository: https://github.com/TakunKenjo/SmartdocAI-AWS
+* Access the project's GitHub repository: https://github.com/THL2410/SmartDocs
 * Select **Code** → **HTTPS**.
 * Copy the repository URL.
 
-![github](/images/5-Workshop/5.2-Prerequisite/5.2.1-source-code-preparation/github.png)
+![github](/images/5-Workshop/5.2-Prerequisite/sourceCode.png)
 
 ### 2. Clone the Source Code to Your Computer
 
@@ -20,7 +20,7 @@ pre : " <b> 5.2.1. </b> "
 * Run the following command:
 
 ```bash
-git clone https://github.com/TakunKenjo/SmartdocAI-AWS.git
+git clone https://github.com/THL2410/SmartDocs.git
 ```
 
-![terminal](/images/5-Workshop/5.2-Prerequisite/5.2.1-source-code-preparation/terminal.png)
+![terminal](/images/5-Workshop/5.2-Prerequisite/terminalClone.png)

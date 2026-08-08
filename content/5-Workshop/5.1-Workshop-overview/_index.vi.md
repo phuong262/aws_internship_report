@@ -20,4 +20,3 @@ Bài workshop hướng dẫn người học tự tay triển khai một giải p
 2. [Đặc tả Kiến trúc Backend & RAG Pipeline](5.1.2%20-backend-architecture/)
 3. [Sơ đồ Kiến trúc Tổng quan trên AWS](5.1.3%20-overall-aws-architecture/)
 4. [Danh sách Dịch vụ AWS Sử dụng](5.1.4%20-aws-services-used/)
-5. [Đặc tả Giao diện và Chức năng Hệ thống](5.1.5%20-ui-function/)
