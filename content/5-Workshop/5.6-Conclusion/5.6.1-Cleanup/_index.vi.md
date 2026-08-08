@@ -46,6 +46,8 @@ Hãy lướt qua một vòng các dịch vụ chính trên AWS Console (đặc b
 
 ### Sự cố 1: "Cannot delete S3 bucket - not empty"
 
+**Nguyên nhân:** Bucket vẫn còn chứa file, hoặc chứa các file ẩn (Versioned objects).
+
 **Cách xử lý:**
 ```powershell
 # Force empty bucket (including versioned objects)

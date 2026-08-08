@@ -46,6 +46,8 @@ Quickly review the key services in the AWS Console (especially the Billing Dashb
 
 ### Issue 1: "Cannot delete S3 bucket - not empty"
 
+**Cause:** The bucket still contains files or hidden files (versioned objects).
+
 **Solution:**
 ```powershell
 # Force empty bucket (including versioned objects)
