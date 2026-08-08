@@ -226,3 +226,94 @@ div.notices.info p {
   border-top: 30px solid #fd9827;
   background: #fff2db;
 }
+
+/* Site-wide typography */
+body {
+  font-size: 20px !important;
+  line-height: 1.7;
+}
+
+#body-inner h1 {
+  font-size: 4rem;
+}
+
+#body-inner h2 {
+  font-size: 2.8rem;
+}
+
+#body-inner h3 {
+  font-size: 2.4rem;
+}
+
+#body-inner p,
+#body-inner li,
+#body-inner td,
+#body-inner th {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+/* Left-hand table of contents */
+#sidebar {
+  font-size: 17px;
+}
+
+#sidebar ul.topics > li > a {
+  font-size: 21px !important;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#sidebar ul.topics li li > a {
+  font-size: 18px !important;
+  line-height: 1.5;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#sidebar #shortcuts h3 {
+  font-size: 15px;
+}
+
+#sidebar #shortcuts li a {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* Wider desktop sidebar to match the visual scale of the reference site */
+@media only all and (min-width: 59.939em) {
+  #sidebar {
+    width: 375px;
+  }
+
+  #body {
+    margin-left: 375px;
+  }
+}
+
+@media only all and (max-width: 47.938em) {
+  body {
+    font-size: 18px !important;
+  }
+
+  #body-inner h1 {
+    font-size: 3rem;
+  }
+
+  #body-inner h2 {
+    font-size: 2.3rem;
+  }
+
+  #body-inner h3 {
+    font-size: 2rem;
+  }
+
+  #body-inner p,
+  #body-inner li,
+  #body-inner td,
+  #body-inner th {
+    font-size: 18px;
+  }
+}
