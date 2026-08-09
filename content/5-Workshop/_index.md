@@ -43,10 +43,6 @@ Learners will practice from resource preparation, Docker Container packaging, cl
 5. **[System Testing](5.5-System-testing/)**
    - 5.5.1 [Authentication Testing](5.5-System-testing/5.5.1-Authentication/)
    - 5.5.2 [Document Upload & RAG Testing](5.5-System-testing/5.5.2-Document-RAG/)
-   - 5.5.3 [Security Testing](5.5-System-testing/5.5.3-Security/)
-   - 5.5.4 [Profile Testing](5.5-System-testing/5.5.4-Profile/)
-   - 5.5.5 [Monitoring & Logging](5.5-System-testing/5.5.5-Monitoring/)
-   - 5.5.6 [CI/CD Automated Testing](5.5-System-testing/5.5.6-CICD/)
 
 6. **[Conclusion](5.6-Conclusion/)**
    - 5.6.1 [Resource Cleanup](5.6-Conclusion/5.6.1-Cleanup/)

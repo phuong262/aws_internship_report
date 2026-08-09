@@ -6,14 +6,13 @@ chapter : false
 pre : " <b> 5.5 </b> "
 ---
 
-Sau khi hoàn tất triển khai Frontend và Backend lên AWS ở các chương trước, nhóm tiến hành kiểm thử toàn diện hệ thống **SmartDocAI** trong môi trường production thực tế. Mục tiêu của phần này là xác minh các luồng nghiệp vụ chính (đăng ký/đăng nhập, tải lên và truy vấn tài liệu bằng RAG, quản lý hồ sơ cá nhân) hoạt động đúng như thiết kế, đồng thời đánh giá khả năng giám sát, bảo mật và độ ổn định của quy trình CI/CD.
+Sau khi hoàn tất triển khai Frontend và Backend, nhóm tiến hành kiểm thử các chức năng chính của **Smart Docs AI** trên môi trường thực tế. Phạm vi kiểm thử tập trung vào hai luồng quan trọng nhất: xác thực người dùng và hỏi đáp trên tài liệu bằng RAG.
 
-Khác với các chương triển khai hạ tầng (tạo tài nguyên qua giao diện AWS Console), phần kiểm thử chủ yếu thực hiện qua terminal (`curl`, AWS CLI) và đối chiếu kết quả trên Console, nên nội dung sẽ tập trung vào bảng test case và log thực tế hơn là ảnh chụp màn hình từng bước.
+Các trường hợp kiểm thử được thực hiện trực tiếp trên giao diện web tại `smart-docs-jet.vercel.app`. Mỗi kết quả được đối chiếu với dữ liệu đầu vào để đánh giá tính chính xác và khả năng xử lý lỗi của hệ thống.
+
+> **Dữ liệu demo:** sử dụng tệp `ke_hoach_gia_dinh_demo.pdf`, gồm kế hoạch chi tiêu, mua sắm, lịch gia đình và chuyến đi Vũng Tàu. Không sử dụng tài liệu chứa thông tin cá nhân thật.
 
 ### Nội dung thực hiện
 
 1. [Kiểm thử xác thực](5.5.1-Authentication/)
 2. [Kiểm thử tải lên tài liệu & RAG](5.5.2-Document-RAG/)
-3. [Kiểm thử bảo mật](5.5.3-Security/)
-4. [Kiểm thử hồ sơ cá nhân](5.5.4-Profile/)
-5. [Giám sát & Nhật ký hệ thống](5.5.5-Monitoring/)

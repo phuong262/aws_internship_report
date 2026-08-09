@@ -6,14 +6,13 @@ chapter : false
 pre : " <b> 5.5 </b> "
 ---
 
-After completing the Frontend and Backend deployment to AWS in the previous chapters, the team carried out comprehensive testing of the **SmartDocAI** system in a real production environment. The goal of this section is to verify that the main business flows (registration/login, document upload and RAG query, personal profile management) work as designed, while also assessing the monitoring, security, and CI/CD stability of the system.
+After completing the Frontend and Backend deployment, the team tested the main functions of **Smart Docs AI** in the deployed environment. The testing scope focused on the two most important workflows: user authentication and document question answering using RAG.
 
-Unlike the infrastructure deployment chapters (creating resources through the AWS Console UI), testing is mostly carried out through the terminal (`curl`, AWS CLI) and cross-checked against the Console, so the content focuses on test-case tables and real logs rather than step-by-step screenshots.
+The test cases were performed directly through the web interface at `smart-docs-jet.vercel.app`. Each result was compared with the input data to evaluate the system's accuracy and error-handling capability.
+
+> **Test data:** the file `ke_hoach_gia_dinh_demo.pdf` contains a synthetic household budget, shopping list, family schedule, and Vung Tau travel plan. No real personal information is used.
 
 ### Contents
 
 1. [Authentication Testing](5.5.1-Authentication/)
-2. [Document Upload & RAG Testing](5.5.2-Document-RAG/)
-3. [Security Testing](5.5.3-Security/)
-4. [Profile Testing](5.5.4-Profile/)
-5. [Monitoring & Logging](5.5.5-Monitoring/)
+2. [Document Upload and RAG Testing](5.5.2-Document-RAG/)
