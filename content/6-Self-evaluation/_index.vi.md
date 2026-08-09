@@ -14,9 +14,9 @@ Tôi luôn cố gắng hoàn thành các nhiệm vụ đúng kế hoạch, chủ
 
 | STT | Tiêu chí | Mô tả | Tốt | Khá | Trung bình |
 | --- | --- | --- | --- | --- | --- |
-| 1 | **Kiến thức và kỹ năng chuyên môn** | Vận dụng kiến thức AWS và công nghệ thông tin vào đề tài | ☐ | ✅ | ☐ |
+| 1 | **Kiến thức và kỹ năng chuyên môn** | Vận dụng kiến thức AWS và công nghệ thông tin vào đề tài | ✅ | ☐ | ☐ |
 | 2 | **Khả năng học hỏi** | Chủ động tiếp cận dịch vụ và kiến thức mới | ✅ | ☐ | ☐ |
-| 3 | **Tính chủ động** | Tự nghiên cứu tài liệu và đề xuất hướng giải quyết | ☐ | ✅ | ☐ |
+| 3 | **Tính chủ động** | Tự nghiên cứu tài liệu và đề xuất hướng giải quyết | ✅ | ☐ | ☐ |
 | 4 | **Tinh thần trách nhiệm** | Theo dõi tiến độ và cố gắng hoàn thành nhiệm vụ | ✅ | ☐ | ☐ |
 | 5 | **Kỷ luật** | Tuân thủ thời gian, nội quy và kế hoạch làm việc | ✅ | ☐ | ☐ |
 | 6 | **Tính cầu tiến** | Tiếp nhận phản hồi và điều chỉnh kết quả | ✅ | ☐ | ☐ |
