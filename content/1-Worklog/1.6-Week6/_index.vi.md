@@ -10,27 +10,25 @@ pre: " <b> 1.6. </b> "
 
 ### Mục tiêu Tuần 6:
 
-* Tăng khả năng giám sát và xử lý lỗi của pipeline.
-* Rà soát quyền IAM, bảo mật dữ liệu và chi phí vận hành.
-* Nghiên cứu Amazon CloudWatch và viết bài chia sẻ.
-* Kiểm thử hệ thống trước khi triển khai phiên bản hoàn chỉnh.
+* Hoàn thiện khả năng xử lý lỗi và giám sát cho luồng S3, Lambda và Textract.
+* Rà soát quyền IAM và kiểm thử nhiều loại tài liệu.
+* Hoàn thiện phần việc xử lý tài liệu để tích hợp vào hệ thống.
 
 ### Các công việc cần triển khai trong tuần này:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |---|---|---|---|---|
-| 2 | - Chuẩn hóa CloudWatch Logs của Lambda theo document ID, trạng thái và bước xử lý<br>- Bổ sung thông tin log cần thiết để dễ tìm nguyên nhân khi xảy ra lỗi | 27/07/2026 | 27/07/2026 | [CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/) |
-| 3 | - Thiết kế dashboard theo dõi số tài liệu đã xử lý, số lần lỗi và thời gian xử lý trung bình<br>- Tìm hiểu cách lựa chọn metric hữu ích cho pipeline Serverless | 28/07/2026 | 28/07/2026 | [CloudWatch Dashboards](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html) |
-| 4 | - Thiết lập cảnh báo thử nghiệm cho Lambda error, timeout và thời gian xử lý bất thường<br>- Kiểm tra cách nhận thông báo khi metric vượt ngưỡng | 29/07/2026 | 29/07/2026 | [CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html) |
-| 5 | - Bổ sung cơ chế retry có kiểm soát<br>- Tìm hiểu dead-letter queue và phương án xử lý sự kiện thất bại mà không làm mất tài liệu | 30/07/2026 | 30/07/2026 | |
-| 6 | - Rà soát IAM theo nguyên tắc least privilege, mã hóa dữ liệu trên S3 và thông tin được phép ghi vào log<br>- Kiểm thử lại toàn bộ luồng từ tải tệp đến dữ liệu đầu ra trước khi triển khai | 31/07/2026 | 31/07/2026 | |
-| 7 | - Viết bài “Làm chủ giám sát hệ thống Serverless với Amazon CloudWatch” | 01/08/2026 | | |
+| 2 | - Chuẩn hóa CloudWatch Logs theo document ID, trạng thái và bước xử lý<br>- Bổ sung log cần thiết để truy vết lỗi | 27/07/2026 | 27/07/2026 | [CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/) |
+| 3 | - Bổ sung xử lý lỗi khi tệp không hợp lệ, thiếu quyền hoặc Textract trả về lỗi<br>- Hoàn thiện cơ chế retry có kiểm soát | 28/07/2026 | 28/07/2026 | [AWS Lambda Error Handling](https://docs.aws.amazon.com/lambda/latest/dg/invocation-retries.html) |
+| 4 | - Kiểm thử với ảnh PNG, JPEG và PDF nhiều trang<br>- Kiểm tra tên tệp có khoảng trắng, ký tự tiếng Việt và object key được URL encode | 29/07/2026 | 29/07/2026 | |
+| 5 | - Đối chiếu văn bản sau xử lý với tài liệu gốc<br>- Sửa lỗi thứ tự dòng, khoảng trắng, xuống dòng và nội dung trùng lặp | 30/07/2026 | 30/07/2026 | |
+| 6 | - Rà soát IAM theo nguyên tắc least privilege cho S3, Lambda, Textract, SNS và CloudWatch<br>- Kiểm tra dữ liệu nhạy cảm không bị ghi vào log | 31/07/2026 | 31/07/2026 | [AWS IAM](https://docs.aws.amazon.com/iam/) |
+| 7 | - Kiểm thử toàn bộ luồng xử lý tài liệu cùng nhóm<br>- Hoàn thiện tài liệu mô tả đầu vào, đầu ra và bàn giao phần xử lý cho bước tích hợp | 01/08/2026 | 01/08/2026 | |
 
 ### Kết quả đạt được tuần 6:
 
-* Pipeline có log nhất quán và dễ truy vết hơn.
-* Xác định các metrics và cảnh báo quan trọng.
-* Bổ sung phương án retry và xử lý sự kiện thất bại.
-* Rà soát quyền IAM và nguyên tắc bảo vệ tài liệu.
-* Hoàn thành kiểm thử luồng xử lý để chuẩn bị triển khai hệ thống trong tuần 7.
-* Hoàn thành bài blog kỹ thuật về Amazon CloudWatch.
+* Luồng xử lý tài liệu có log nhất quán và dễ truy vết.
+* Bổ sung xử lý lỗi và retry cho các trường hợp thường gặp.
+* Xử lý thành công ảnh và PDF nhiều trang, gồm tên tệp có ký tự tiếng Việt.
+* Rà soát quyền IAM đúng phạm vi cần thiết.
+* Hoàn thành kiểm thử và bàn giao đầu ra cho bước tích hợp hệ thống.

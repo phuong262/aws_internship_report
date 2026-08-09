@@ -23,7 +23,7 @@ pre: " <b> 1.3. </b> "
 | 4 | - Học cấu trúc dữ liệu của một S3 event<br>- Viết Lambda đọc bucket, object key, kích thước và metadata của tệp vừa tải lên<br>- Kiểm tra quyền IAM để Lambda chỉ được truy cập các tài nguyên cần thiết | 08/07/2026 | 08/07/2026 | [Using Lambda with S3](https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html) |
 | 5 | - Kiểm tra phần mở rộng và giới hạn định dạng tệp được hỗ trợ<br>- Xử lý object key được URL encode và tên tệp có khoảng trắng hoặc ký tự tiếng Việt<br>- Bổ sung kiểm tra dữ liệu đầu vào trước khi chuyển sang bước OCR | 09/07/2026 | 09/07/2026 | |
 | 6 | - Tìm hiểu API đồng bộ của Amazon Textract<br>- Thử gọi Textract từ Lambda với ảnh PNG/JPEG mẫu và đọc các block PAGE, LINE, WORD trong phản hồi | 10/07/2026 | 10/07/2026 | [Amazon Textract API](https://docs.aws.amazon.com/textract/latest/dg/API_Reference.html) |
-| 7 | - Lưu kết quả Textract thô vào khu vực output trên S3<br>- Kiểm tra CloudWatch Logs để theo dõi từng bước xử lý<br>- Tổng kết thử nghiệm và ghi nhận các vấn đề cần giải quyết với PDF nhiều trang | 11/07/2026 | 11/07/2026 | [CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/) |
+| 7 | - Lưu kết quả Textract thô vào khu vực output trên S3<br>- Kiểm tra CloudWatch Logs và ghi nhận các vấn đề cần giải quyết với PDF nhiều trang<br>- Tham dự sự kiện **Cloud Architect x Meet up 11/07** tại văn phòng AWS; theo dõi phần thi giữa KLKAT và Ngũ Đại Hiệp, học mẹo thi chứng chỉ AWS và tìm hiểu Frontier Agent | 11/07/2026 | 11/07/2026 | [CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/), [Event 2](../../4-EventParticipated/4.2-Event2/) |
 
 ### Kết quả đạt được tuần 3:
 
@@ -33,3 +33,4 @@ pre: " <b> 1.3. </b> "
 * Lưu được kết quả thô trên Amazon S3.
 * Bổ sung bước giải mã object key để xử lý tên tệp có khoảng trắng.
 * Giới hạn trigger bằng prefix để tránh vòng lặp khi Lambda ghi kết quả.
+* Tham dự Cloud Architect x Meet up, học thêm về phương pháp ôn thi chứng chỉ AWS và ứng dụng Frontier Agent trong bảo mật.

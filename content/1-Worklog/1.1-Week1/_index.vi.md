@@ -19,6 +19,7 @@ pre: " <b> 1.1. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |---|---|---|---|---|
+| 7 (trước tuần 1) | - Tham dự sự kiện **Cloud Architect**<br>- Theo dõi phần thi kiến thức AWS giữa các đội<br>- Học thêm về kiến trúc hệ thống, chiến lược Cloud, tư duy nhanh và phối hợp nhóm | 20/06/2026 | 20/06/2026 | [Event 1: Cloud Architect](../../4-EventParticipated/4.1-Event1/) |
 | 2 | - Tham gia buổi giới thiệu chương trình First Cloud AI Journey và tìm hiểu mục tiêu của kỳ thực tập<br>- Làm quen với mentor, team admin và các thành viên trong nhóm<br>- Tìm hiểu không gian văn phòng, nội quy, thời gian làm việc, cách trao đổi khi cần hỗ trợ và thời hạn nộp Worklog hằng tuần<br>- Xem hướng dẫn xây dựng Workshop, làm quen với cấu trúc báo cáo và yêu cầu trình bày nội dung | 22/06/2026 | 22/06/2026 | [AWS Study Group Workshops](https://workshops.awsstudygroup.com/) |
 | 3 | - Cài đặt và làm quen với Hugo, Git và Visual Studio Code để phục vụ việc viết báo cáo<br>- Tìm hiểu cách tổ chức thư mục nội dung, cú pháp Markdown và quy trình chạy thử website trên máy cục bộ<br>- Tạo khung báo cáo từ mẫu, thử chỉnh sửa một trang nội dung và đồng bộ thay đổi lên GitHub<br>- Thống nhất với nhóm cách quản lý mã nguồn: mỗi thành viên làm trên nhánh riêng và tạo Pull Request trước khi gộp nội dung | 23/06/2026 | 23/06/2026 | [Hugo Documentation](https://gohugo.io/documentation/), [Markdown Guide](https://www.markdownguide.org/basic-syntax/) |
 | 4 | - Học khái niệm Cloud Computing và các mô hình IaaS, PaaS, SaaS<br>- Tìm hiểu điểm khác biệt giữa sử dụng hạ tầng tại chỗ và sử dụng dịch vụ Cloud<br>- Tìm hiểu hạ tầng toàn cầu của AWS: Region, Availability Zone và Edge Location<br>- Ghi chú vai trò của mô hình Multi-AZ đối với tính sẵn sàng và khả năng phục hồi của hệ thống | 24/06/2026 | 24/06/2026 | [Cloud Journey](https://cloudjourney.awsstudygroup.com/), [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/) |
@@ -28,6 +29,7 @@ pre: " <b> 1.1. </b> "
 
 ### Kết quả đạt được tuần 1:
 
+* Tham dự sự kiện Cloud Architect, củng cố kiến thức AWS, kiến trúc hệ thống và kỹ năng phối hợp nhóm.
 * Làm quen với môi trường văn phòng, mentor, team admin và các thành viên trong chương trình First Cloud AI Journey.
 * Nắm được nội quy, lịch làm việc, cách phối hợp trong nhóm và quy trình báo cáo tiến độ hằng tuần.
 * Biết cách sử dụng Hugo và Markdown ở mức cơ bản để chỉnh sửa, chạy thử và quản lý nội dung báo cáo thực tập.
