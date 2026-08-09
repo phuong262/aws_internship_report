@@ -1,9 +1,9 @@
 ---
 title: "Tạo Amazon S3 lưu trữ tài liệu thô"
 date: 2024-01-01
-weight: 2
+weight: 3
 chapter: false
-pre: " <b> 5.4.2 </b> "
+pre: " <b> 5.4.3 </b> "
 ---
 
 Trong phần này, nhóm sử dụng Amazon S3 để lưu trữ các tài liệu PDF và hình ảnh thô được tải lên hệ thống Smart Docs AI.

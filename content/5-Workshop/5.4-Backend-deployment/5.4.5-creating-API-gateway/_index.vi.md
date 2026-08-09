@@ -1,8 +1,8 @@
 ---
 title : "Thiết lập Amazon API Gateway"
-weight : 4
+weight : 5
 chapter : false
-pre : " <b> 5.4.4 </b> "
+pre : " <b> 5.4.5 </b> "
 ---
 
 ### 1. Khởi tạo Amazon API Gateway

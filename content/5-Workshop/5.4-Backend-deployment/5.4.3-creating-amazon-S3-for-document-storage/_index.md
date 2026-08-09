@@ -1,9 +1,9 @@
 ---
 title: "Creating an Amazon S3 Bucket for Raw Document Storage"
 date: 2024-01-01
-weight: 2
+weight: 3
 chapter: false
-pre: " <b> 5.4.2 </b> "
+pre: " <b> 5.4.3 </b> "
 ---
 
 In this section, the team uses Amazon S3 to store raw PDF documents and images uploaded to the Smart Docs AI system.

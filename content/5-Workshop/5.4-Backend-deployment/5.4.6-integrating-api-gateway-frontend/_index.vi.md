@@ -1,8 +1,8 @@
 ---
 title : "Tích hợp API Gateway và Frontend"
-weight : 5
+weight : 6
 chapter : false
-pre : " <b> 5.4.5 </b> "
+pre : " <b> 5.4.6 </b> "
 ---
 
 ### 1. Xây dựng giao diện Frontend (React App)

@@ -1,20 +1,20 @@
 ---
-title: "RDS PostgreSQL và pgvector"
-weight: 3
+title: "RDS PostgreSQL and pgvector"
+weight: 4
 chapter: false
-pre: "<b> 5.4.3 </b>"
+pre: "<b> 5.4.4 </b>"
 ---
 
-## Khởi tạo RDS PostgreSQL
+## Initialize RDS PostgreSQL
 
-1. Mở Amazon RDS Console.
+1. Open the Amazon RDS Console.
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/rds.png)
-2. Chọn **Create database**.
-3. Chọn PostgreSQL, Phương thức Full configration, mẫu Dev/Test.
+2. Select **Create database**.
+3. Select PostgreSQL, Full configuration method, Dev/Test template.
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/rds2.png)
-4. Chọn cấu hình phù hợp với môi trường.
+4. Choose the appropriate configuration for the environment.
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/3.png)
-5. Cấu hình
+5. Configuration
 ```text
 Engine version = PostgreSQL 16.14-R2
 DB identifier = chatbot-postgres-dev
@@ -28,15 +28,15 @@ Storage type = General Purpose SSD (gp3)
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/5.png)
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/6.png)
 
-6. Chọn VPC, DB Subnet Group và Security Group đã tạo.
+6. Select the created VPC, DB Subnet Group and Security Group.
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/7.png)
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/8.png)
-7. Tạo database và chờ trạng thái **Available**.
+7. Create database and wait for **Available** status.
 ![RDS Available](/images/5-Workshop/5.4-Backend-Deployment/9.png)
 
-## Lambda khởi tạo database, kích hoạt pgvector
+## Lambda initializes database, activates pgvector
 
-1. Power shell chạy lệnh:
+1. Power shell run command:
 ```text
 New-Item -ItemType Directory -Force package
 
@@ -49,7 +49,7 @@ Compress-Archive `
     -DestinationPath .\rds-init-dev.zip `
     -Force
 ```
-2. Tạo Lambda rds-init-dev
+2. Create Lambda rds-init-dev
 
 ```text
 def get_database_secret() -> dict[str, Any]:
@@ -150,5 +150,5 @@ def create_database_objects(cursor: Any) -> None:
         """
     )
 ```
-3. Kết quả commit transaction.
+3. Commit transaction results.
 ![pgvector enabled](/images/5-Workshop/5.4-Backend-Deployment/10.png)

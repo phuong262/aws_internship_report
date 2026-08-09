@@ -34,10 +34,11 @@ Learners will practice from resource preparation, Docker Container packaging, cl
 
 4. **[AWS Backend Infrastructure Deployment](5.4-Backend-deployment/)**
    - 5.4.1 [Creating an Amazon Cognito User Pool](5.4-Backend-deployment/5.4.1-creating-amazon-cognito/)
-   - 5.4.2 [Creating Amazon S3 for raw document storage](5.4-Backend-deployment/5.4.2-creating-amazon-S3-for-document-storage/)
-   - 5.4.3 [Creating Amazon RDS PostgreSQL & pgvector](5.4-Backend-deployment/5.4.3-creating-amazon-rds-pgvector/)
-   - 5.4.4 [Setting up Amazon API Gateway](5.4-Backend-deployment/5.4.4-creating-API-gateway/)
-   - 5.4.5 [Integrating API Gateway with the Frontend (AWS Amplify)](5.4-Backend-deployment/5.4.5-integrating-api-gateway-frontend/)
+   - 5.4.2 [Creating Amazon DynamoDB](5.4-Backend-deployment/5.4.2-creating-amazon-dynamoDB/)
+   - 5.4.3 [Creating Amazon S3 for raw document storage](5.4-Backend-deployment/5.4.3-creating-amazon-S3-for-document-storage/)
+   - 5.4.4 [Creating Amazon RDS PostgreSQL & pgvector](5.4-Backend-deployment/5.4.4-creating-amazon-rds-pgvector/)
+   - 5.4.5 [Setting up Amazon API Gateway](5.4-Backend-deployment/5.4.5-creating-API-gateway/)
+   - 5.4.6 [Integrating API Gateway with the Frontend (AWS Amplify)](5.4-Backend-deployment/5.4.6-integrating-api-gateway-frontend/)
 
 5. **[System Testing](5.5-System-testing/)**
    - 5.5.1 [Authentication Testing](5.5-System-testing/5.5.1-Authentication/)
