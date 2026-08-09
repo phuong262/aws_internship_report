@@ -32,6 +32,12 @@ Người học sẽ được thực hành từ khâu chuẩn bị tài nguyên, 
 3. **[Triển khai Frontend SPA (Frontend Deployment)](5.3-Frontend-deployment/)**
 
 4. **[Triển khai Hạ tầng Backend AWS (Backend Deployment)](5.4-Backend-deployment/)**
+   - 5.4.1 [Khởi tạo Amazon Cognito User Pool](5.4.1-creating-amazon-cognito/)
+   - 5.4.2 [Khởi tạo Amazon DynamoDB](5.4.2-creating-amazon-dynamoDB/)
+   - 5.4.3 [Tạo Amazon S3 lưu trữ tài liệu thô](5.4.3-creating-amazon-S3-for-document-storage/)
+   - 5.4.4 [Khởi tạo Amazon RDS PostgreSQL & pgvector](5.4.4-creating-amazon-rds-pgvector/)
+   - 5.4.5 [Thiết lập Amazon API Gateway](5.4.5-creating-API-gateway/)
+   - 5.4.6 [Tích hợp API Gateway vào Frontend (AWS Amplify)](5.4.6-integrating-api-gateway-frontend/)
 
 5. **[Kiểm thử hệ thống (System Testing)](5.5-System-testing/)**
 

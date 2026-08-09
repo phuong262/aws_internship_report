@@ -30,22 +30,15 @@ Learners will practice from resource preparation, Docker Container packaging, cl
    - 5.2.3 [IAM User Creation & AWS CLI Configuration](5.2-Prerequiste/5.2.3-creating-an-IAM-user/)
 
 3. **[Frontend SPA Deployment](5.3-Frontend-deployment/)**
-   - 5.3.1 [Create S3 Bucket for Static Website Hosting](5.3-Frontend-deployment/5.3.1-create-S3-bucket/)
-   - 5.3.2 [Enable Static Website Hosting Feature](5.3-Frontend-deployment/5.3.2-enable-static-web-hosting/)
-   - 5.3.3 [Configure Block Public Access Settings](5.3-Frontend-deployment/5.3.3-config-block-public-access-settings/)
-   - 5.3.4 [Configure S3 Bucket Policy for Public Read Permission](5.3-Frontend-deployment/5.3.4-config-bucket-policy-public-read/)
-   - 5.3.5 [Verify Static Website Deployment](5.3-Frontend-deployment/5.3.5-website-verification/)
-   - 5.3.6 [Accelerate Performance & Security with AWS CloudFront (CDN)](5.3-Frontend-deployment/5.3.6-accelerating-website-performance-with-cloudfront/)
-   - 5.3.7 [Automate Frontend Deployment with AWS CodePipeline](5.3-Frontend-deployment/5.3.7-codepipeline-to-S3-frontend/)
+
 
 4. **[AWS Backend Infrastructure Deployment](5.4-Backend-deployment/)**
-   - 5.4.1 [Create Amazon Cognito User Pool & Bind Hosted UI Domain](5.4-Backend-deployment/5.4.1-creating-amazon-cognito/)
-   - 5.4.2 [Create Amazon DynamoDB NoSQL Tables](5.4-Backend-deployment/5.4.2-creating-amazon-dynamoDB/)
-   - 5.4.3 [Create Amazon S3 Document Bucket & Configure CORS](5.4-Backend-deployment/5.4.3-creating-amazon-S3-for-document-storage/)
-   - 5.4.4 [Package Docker Container & Deploy AWS Lambda Engine](5.4-Backend-deployment/5.4.4-creating-AWS-lambda/)
-   - 5.4.5 [Create Amazon API Gateway REST API & Cognito Authorizer](5.4-Backend-deployment/5.4.5-creating-API-gateway/)
-   - 5.4.6 [Routing & Integrating Frontend CloudFront to API Gateway](5.4-Backend-deployment/5.4.6-implementing-frontend-API-gateway-integration/)
-   - 5.4.7 [Automate Lambda Deployment with AWS CodePipeline & CodeBuild](5.4-Backend-deployment/5.4.7-automating-lambda-deployment-with-codePipeline/)
+   - 5.4.1 [Creating an Amazon Cognito User Pool](5.4.1-creating-amazon-cognito/)
+   - 5.4.2 [Creating Amazon DynamoDB](5.4.2-creating-amazon-dynamoDB/)
+   - 5.4.3 [Creating Amazon S3 for raw document storage](5.4.3-creating-amazon-S3-for-document-storage/)
+   - 5.4.4 [Creating Amazon RDS PostgreSQL & pgvector](5.4.4-creating-amazon-rds-pgvector/)
+   - 5.4.5 [Setting up Amazon API Gateway](5.4.5-creating-API-gateway/)
+   - 5.4.6 [Integrating API Gateway with the Frontend (AWS Amplify)](5.4.6-integrating-api-gateway-frontend/)
 
 5. **[System Testing](5.5-System-testing/)**
    - 5.5.1 [Authentication Testing](5.5-System-testing/5.5.1-Authentication/)
