@@ -23,8 +23,7 @@ Trong phần này, nhóm sẽ thực hiện triển khai toàn bộ hệ thống
 ### Nội dung thực hiện
 
 1. [Khởi tạo Amazon Cognito User Pool](5.4.1-creating-amazon-cognito/)
-2. [Khởi tạo Amazon DynamoDB](5.4.2-creating-amazon-dynamoDB/)
-3. [Tạo Amazon S3 lưu trữ tài liệu thô](5.4.3-creating-amazon-S3-for-document-storage/)
-4. [Khởi tạo Amazon RDS PostgreSQL & pgvector](5.4.4-creating-amazon-rds-pgvector/)
-5. [Thiết lập Amazon API Gateway](5.4.5-creating-API-gateway/)
-6. [Tích hợp API Gateway vào Frontend (AWS Amplify)](5.4.6-integrating-api-gateway-frontend/)
+2. [Tạo Amazon S3 lưu trữ tài liệu thô](5.4.2-creating-amazon-S3-for-document-storage/)
+3. [Khởi tạo Amazon RDS PostgreSQL & pgvector](5.4.3-creating-amazon-rds-pgvector/)
+4. [Thiết lập Amazon API Gateway](5.4.4-creating-API-gateway/)
+5. [Tích hợp API Gateway vào Frontend (AWS Amplify)](5.4.5-integrating-api-gateway-frontend/)

@@ -22,8 +22,7 @@ In this section, the team will deploy the entire backend processing system and s
 ### Implementation Steps
 
 1. [Initialize Amazon Cognito User Pool](5.4.1-creating-amazon-cognito/)
-2. [Initialize Amazon DynamoDB](5.4.2-creating-amazon-dynamoDB/)
-3. [Create Amazon S3 for raw document storage](5.4.3-creating-amazon-S3-for-document-storage/)
-4. [Initialize Amazon RDS PostgreSQL & pgvector](5.4.4-creating-amazon-rds-pgvector/)
-5. [Set up Amazon API Gateway](5.4.6-creating-API-gateway/)
-6. [Integrate API Gateway with the frontend (AWS Amplify)](5.4.7-integrating-api-gateway-frontend/)
+2. [Create Amazon S3 for raw document storage](5.4.2-creating-amazon-S3-for-document-storage/)
+3. [Initialize Amazon RDS PostgreSQL & pgvector](5.4.3-creating-amazon-rds-pgvector/)
+4. [Set up Amazon API Gateway](5.4.4-creating-API-gateway/)
+5. [Integrate API Gateway with the frontend (AWS Amplify)](5.4.5-integrating-api-gateway-frontend/)
